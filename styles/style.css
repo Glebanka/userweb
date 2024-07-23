@@ -1,0 +1,580 @@
+@font-face {
+  font-family: 'Futura PT Cond';
+  src: url('../assets/fonts/FuturaPTCond-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../assets/fonts/OpenSans-VariableFont_wdth\,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+
+:root {
+  --line-width: 10px;
+}
+
+/* Сброс всех стилей: */
+
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Убираем внутренние и внешние отступы */
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+}
+a{
+  text-decoration-skip-ink: auto;
+}
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+html{
+  background-color: #0A0A0A;
+  overflow-x: hidden;
+}
+html * {
+  color: #FFF;
+  text-decoration: none;
+  font-family: Open Sans, Arial, Helvetica, sans-serif;
+}
+
+/* Компоненты */
+
+.btn{
+  background-color: #FF4000;
+  color: #FFF;
+
+  border-radius: 48px;
+  border: 0;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+.btn:hover{
+  background-color: #D33500;
+}
+.btnSmall{
+  font-size: 12px;
+  font-weight: 600;
+
+  padding: 9px 12px 11px 12px;
+}
+.btnBig{
+  font-size: 18px;
+  font-weight: 600;
+
+  padding: 16px 24px;
+}
+.centeredContainer{
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.grayText{
+  font-family: Futura PT Cond, Helvetica, Arial;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+
+
+/* Хедер и навигация */
+
+header{
+  background-color: #1D1D1D; 
+}
+nav {
+  width: 984px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0 16px 0;
+}
+
+nav div{
+  display: flex;
+  gap: 32px;
+}
+nav div a {
+  font-family: Futura PT Cond, Helvetica, Arial;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.4);
+  transition: 0.3s;
+}
+nav div a:hover, nav div a.active {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* Бургер */
+nav input[type=checkbox], label.burger{
+  display: none;
+}
+
+div.burgerLinks{
+  display: none;
+}
+
+/* "Лучшее предложение" */
+
+section.bestOffer {
+  background-color: rgba(0, 0, 0, .4);
+}
+
+.bestOfferWrapper{
+  width: 984px;
+  margin: 0 auto;
+
+  align-items: center;
+  justify-content: end;
+  display: flex;
+  padding: 16px 0 16px 0;
+  gap: 12px;
+}
+
+.bestOfferWrapper p{
+  font-family: Futura PT Cond, Helvetica, Arial;
+  font-size: 16px;
+}
+
+
+
+
+/* Главный текст */
+.mainText {
+  width: 984px;
+  margin: 80px auto 0 auto;
+  
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  gap: 16px;
+  text-align: center;
+}
+
+.mainText h2{
+  font-size: 68px;
+  font-family: Futura PT Cond, Helvetica, Arial;
+}
+.mainText p{
+  width: 756px;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 150%;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+
+/* Табы для изменения контента */
+
+.tabsContainer {
+  width: 984px;
+  border-bottom: rgba(255, 255, 255, 0.3) solid 2px;
+  padding-bottom: 16px;
+  margin: 95px auto 0 auto;
+
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+}
+
+.tab {
+  font-family: Futura PT Cond, Helvetica, Arial;
+  font-size: 32px;
+  line-height: 100%;
+
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tab:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+.tabActive,
+.tabActive:hover {
+  color: #FF4001;
+  cursor: default;
+}
+
+/* Стиль для оранжевой линии под табом */
+.tabsContainer::after {
+  content: '';
+  display: block;
+  width: var(--line-width);
+  height: 2px;
+  background-color: #FF4001;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  transition: width 0.3s;
+}
+
+select{
+  display: none;
+}
+
+
+
+/* Слайдер */
+
+.swiper{
+  margin-top: 64px;
+  margin-bottom: 160px;
+  width: 984px;
+  overflow: visible;
+}
+
+/* Отдельный слайд */
+
+.swiper-slide {
+  padding: 24px 16px 24px 16px;
+  width: 312px;
+
+  background-color: #1D1D1D;
+  display: flex;
+  gap: 24px;
+  flex-flow: column;
+
+  border-radius: 16px;
+}
+
+.sliderContainer{
+  display: flex;
+  flex-flow: column;
+  gap: 24px;
+}
+
+
+/* Кнопка "посмотреть скрин" */
+
+.sliderImageContainer{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+}
+.sliderImageContainer *{
+  color: rgba(255, 255, 255, 0.6);
+  transition: 0.3s;
+  text-decoration: underline;
+}
+.sliderImageContainer:hover *{
+  color: rgba(255, 255, 255, 1);
+}
+
+
+/* Оценка отзыва */
+
+.ratingContainer{
+  display: flex;
+  gap: 2px;
+}
+.star{
+  width: 20px;
+  height: 20px;
+  background-image: url(../assets/Star.svg);
+}
+
+
+/* Текст слайдера */
+
+.sliderHeading{
+  font-family: Futura PT Cond, Arial, Helvetica, sans-serif;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  font-size: 32px;
+}
+
+.sliderContainer p{
+  line-height: 140%;
+  letter-spacing: -0.02em;
+
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+p.meta-info{
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.yandexLogo{
+  background-image: url(../assets/yandexLogo.svg);
+  width: 144px;
+  height: 24px;
+}
+
+
+/* Кнопки для слайдера */
+
+.sliderButton{
+  width: 104px;
+  height: 104px;
+  cursor: pointer;
+  background-position: top 4px center;
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+}
+
+.sliderPrevButton{
+  background-image: url(../assets/sliderButtons/prevActive.svg);
+  transform: translateX(-50%) translateY(-50%);
+}
+.sliderNextButton{
+  background-image: url(../assets/sliderButtons/nextActive.svg);
+  transform: translateX(50%) translateY(-50%);
+  right: 0px;
+}
+
+.sliderPrevButton.swiper-button-disabled{
+  background-image: url(../assets/sliderButtons/prevDisabled.svg);
+  cursor: default;
+}
+.sliderNextButton.swiper-button-disabled{
+  background-image: url(../assets/sliderButtons/nextDisabled.svg);
+  cursor: default;
+}
+
+
+
+
+@media (max-width: 375px) {
+  /* функция пересчитывает: 1 rem = 10px */
+  html {
+    font-size: calc(10px + (10 * (100vw - 375px) / 375));
+  }
+
+  /* Компоненты */
+
+  .btnBig{
+    font-size: 1.8rem;
+    padding: 1.6rem 2.4rem;
+  }
+  .btnSmall{
+    font-size: 1.2rem;
+    padding: 0.9rem 1.2rem 1.1rem 1.2rem;
+  }
+
+  
+  /* Навигация и Хедер */
+  nav{
+    width: 34.3rem;
+  }
+  nav div{
+    display: none;
+  }
+
+  div.burgerLinks{
+    position: absolute;
+    left: 0;
+    top: 58px;
+
+    height: fit-content;
+    background-color: #1D1D1D;
+    border-bottom-right-radius: 8px;
+
+    z-index: 3;
+
+    display: flex;
+    flex-flow: nowrap column;
+    gap: 10px;
+    padding: 3rem 4rem 4rem 3rem;    
+    
+    transform: translateX(-500%);
+    transition: all .3s;
+  }
+
+  div.burgerLinks a{
+    font-size: 3.2rem;
+  }
+
+  /* Бургер */
+
+  label.burger {
+    display: block;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    
+    background: transparent;
+    width: 18px;
+    height: 12px;
+  }
+  label.burger::before,
+  label.burger::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: #FFF;
+  }
+  label.burger::before {
+      top: 0;
+      box-shadow: 0 5px 0 #FFF;
+      transition: box-shadow .3s .15s, top .3s .15s, transform .3s;
+  }
+  label.burger::after {
+      bottom: 0;
+      transition: bottom .3s .15s, transform .3s;
+  }
+  /* Условие если нажать бургер */
+  .burgerСheckbox:checked ~ div.burgerLinks{
+      display: flex;
+      transform: translateX(0);
+  }
+  /* Анимация бургера */
+  header input[type=checkbox]:checked + .burger::before {
+      top: 5px;
+      transform: rotate(45deg);
+      box-shadow: 0 6px 0 rgba(0,0,0,0);
+      transition: box-shadow .15s, top .3s, transform .3s .15s;
+  }
+  header input[type=checkbox]:checked + .burger::after {
+      bottom: 5px;
+      transform: rotate(-45deg);
+      transition: bottom .3s, transform .3s .15s;
+  }
+
+  /* "Лучшее предложение" */
+  .bestOfferWrapper{
+    width: 34.3rem;
+
+    font-size: 1.6rem;
+  }
+
+  .bestOfferWrapper p{
+    font-size: 1.6rem;
+  }
+
+
+  /* Главный текст */
+  .mainText {
+    width: 34.3rem;
+    margin-top: 4rem;
+  }
+  .mainText h2{
+    font-size: 4.8rem;
+  }
+  .mainText p{
+    width: 100%;
+    font-size: 1.8rem;
+  }
+
+  /* Табы для выбора контента */
+  .tabsContainer{
+    display: none;
+  }
+
+  /* select для выбора контента */
+  select{
+    display: block;
+
+    font-size: 3.2rem;
+    font-family: Futura PT Cond, Arial, Helvetica, sans-serif;
+    color: #FF4001;
+    background-color: #1D1D1D;
+    border: 0;
+    border-radius: 8px;
+    padding: 1.1rem 1.6rem 1.1rem 1.6rem;
+
+    /* заменяем стрелочку на свою */
+    appearance: none;
+    background-image: url(../assets/selectArrow.svg);
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: right 1.6rem;
+
+    width: 33.5rem;
+    margin: 4rem auto 0 auto;
+  }
+
+
+  /* Слайдер */
+  .swiper{
+    width: 34.3rem;
+    margin-top: 1.6rem;
+    margin-bottom: 12rem;
+    overflow: hidden;
+  }
+
+  .swiper-wrapper{
+    overflow: visible;
+  }
+
+
+  /* Отдельный слайд */
+  .swiper-slide {
+    width: 31.2rem;
+    gap: 2.4rem;
+
+    padding: 2.4rem 1.6rem;
+
+    font-size: 1.8rem;
+  }
+
+  .sliderContainer{
+    gap: 2.4rem;
+  }
+
+
+  /* "Посмотреть скрин" */
+  .sliderImageContainer svg{
+    width: 6.4rem;
+    height: 6.4rem;
+  }
+  
+  /* Текст слайдера */
+  .sliderHeading{
+    font-size: 3.2rem;
+  }
+
+  .sliderContainer p{
+    font-size: 1.8rem;
+  }
+  
+  p.meta-info{
+    font-size: 1.2rem;
+  }
+
+  .yandexLogo{
+    background-size: 14.4rem 2.4rem;
+    width: 14.4rem;
+    height: 2.4rem;
+  }
+
+  /* Кнопки слайдера */
+  .sliderButton{
+    display: none;
+  }
+}
