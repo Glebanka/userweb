@@ -273,14 +273,17 @@ select{
 
 /* Отдельный слайд */
 
+
 .swiper-slide {
   padding: 24px 16px 24px 16px;
   width: 312px;
+  height: 624px;
 
   background-color: #1D1D1D;
   display: flex;
   gap: 24px;
   flex-flow: column;
+  justify-content: space-between;
 
   border-radius: 16px;
 }
@@ -289,55 +292,9 @@ select{
   display: flex;
   flex-flow: column;
   gap: 24px;
-  height: 624px;
 }
 
-/* Оценка отзыва */
-
-.ratingContainer{
-  display: flex;
-  gap: 2px;
-}
-.star{
-  width: 20px;
-  height: 20px;
-  background-image: url(../assets/Star.svg);
-}
-
-
-/* Текст слайдера */
-
-h3.sliderHeading{
-  font-family: Futura PT Cond, Arial, Helvetica, sans-serif;
-  font-weight: 400;
-  line-height: 100%;
-  letter-spacing: -0.02em;
-  font-size: 32px;
-}
-
-.sliderContainer p.content{
-  line-height: 140%;
-  letter-spacing: -0.02em;
-
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.6);
-  position: relative;
-  
-}
-.sliderContainer p.content:after{
-  content: '';
-  display: block;
-  position: absolute;
-  bottom: 0px;
-  width: 280px;
-  height: 80px;
-  background-image: linear-gradient(rgba(29, 29, 29, 0), rgba(29, 29, 29, 1));
-}
-
-p.meta-info{
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
-}
+/* Логотипы для каждой платформы */
 
 div.sliderContainer .yandex{
   background-image: url(../assets/yandexLogo.svg);
@@ -365,6 +322,119 @@ div.sliderContainer .thor{
   height: 28px;
 }
 
+/* Оценка отзыва */
+
+.ratingContainer{
+  display: flex;
+  gap: 2px;
+}
+.star{
+  width: 20px;
+  height: 20px;
+  background-image: url(../assets/Star.svg);
+}
+
+
+/* Текст слайдера */
+
+h3.sliderHeading{
+  font-family: Futura PT Cond, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  font-size: 32px;
+
+  max-height: 32px;
+  overflow: hidden;
+}
+
+.sliderContainer p.content{
+  max-height: 300px;
+  overflow: hidden;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  position: relative;
+}
+.sliderContainer p.content:after{
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  width: 280px;
+  height: 80px;
+  background-image: linear-gradient(rgba(29, 29, 29, 0), rgba(29, 29, 29, 1));
+}
+.sliderContainer p.content.limited{
+  max-height: 200px;
+}
+
+p.meta-info{
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+div.assetsContainer{
+  display: flex;
+  gap: 16px;
+}
+
+div.slideImage{
+  width: 68px;
+  height: 68px;
+  border-radius: 8px;
+  background-position: center;
+  background-size: cover;
+
+  position: relative;
+}
+div.slideImage .imagesCounter{
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  background-color: #FFF;
+  
+}
+div.slideImage .imagesCounter .count{
+  color: #0A0A0A;
+  font-size: 12px;
+  font-family: Open Sans, Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-40%) translateY(-53%);
+}
+
+div.slideVideo{
+  width: 68px;
+  height: 68px;
+  border-radius: 8px;
+  background-position: center;
+  background-size: cover;
+
+  position: relative;
+}
+div.playButton{
+  width: 40px;
+  height: 40px;
+  background-image: url(../assets/playButton.svg);
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+
+
 
 /* Кнопка "посмотреть отзыв" */
 
@@ -373,17 +443,13 @@ div.sliderContainer .thor{
   height: 64px;
   background-color: rgba(255, 255, 255, 0.6);
   
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 23px 24px 23px 24px;
   border-radius: 32px;
   
   font-family: Open Sans, Verdana, Geneva, Tahoma, sans-serif;
   font-size: 18px;
   font-weight: 600;
 
-  /* position: relative; */
+  position: relative;
   transition: all 0.3s;
 }
 
@@ -393,15 +459,21 @@ div.sliderContainer .thor{
 
 .btnWhite div{
   color: black;
-  /* position: absolute; */
-  top: auto;
-  bottom: auto;
+  width: max-content;
+  position: absolute;
 
-  left: 58px;
+  line-height: 100%;
+
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
   transition: all 0.3s;
 }
-.btnWhite:hover div{
-  left: 28px;
+.btnWhite div.btnText{
+  transform: translateX(-50%) translateY(-50%);
+}
+.btnWhite:hover div.btnText{
+  transform: translateX(-67%) translateY(-50%);
 }
 
 .btnWhite div.expandSVG{
@@ -409,20 +481,19 @@ div.sliderContainer .thor{
   width: 16px;
   height: 16px;
 
-  display: none;
   visibility: hidden;
   opacity: 0;
   scale: 0;
 
-  /* position: absolute; */
-  /* left: auto;
-  right: 28px; */
+  position: absolute; 
+  left: auto;
+  right: 28px;
 
+  transform-origin: left top;
   transition: all 0.3s;
 }
 
 .btnWhite:hover div.expandSVG{
-  display: block;
   visibility: visible;
   opacity: 1;
   scale: 1;
@@ -439,25 +510,30 @@ div.sliderContainer .thor{
   position: absolute;
   top: 50%;
   z-index: 10;
+  transition: all 0.3s;
+  visibility: visible;
+  opacity: 1;
 }
 
 .sliderPrevButton{
-  background-image: url(../assets/sliderButtons/prevActive.svg);
+  background-image: url(../assets/sliderButtons/prevDisabled.svg);
   transform: translateX(-50%) translateY(-50%);
 }
+.sliderPrevButton:hover{
+  background-image: url(../assets/sliderButtons/prevActive.svg);
+  
+}
 .sliderNextButton{
-  background-image: url(../assets/sliderButtons/nextActive.svg);
+  background-image: url(../assets/sliderButtons/nextDisabled.svg);
   transform: translateX(50%) translateY(-50%);
   right: 0px;
 }
-
-.sliderPrevButton.swiper-button-disabled{
-  background-image: url(../assets/sliderButtons/prevDisabled.svg);
-  cursor: default;
+.sliderNextButton:hover{
+  background-image: url(../assets/sliderButtons/nextActive.svg);
 }
-.sliderNextButton.swiper-button-disabled{
-  background-image: url(../assets/sliderButtons/nextDisabled.svg);
-  cursor: default;
+.swiper-button-disabled{
+  visibility: hidden;
+  opacity: 0;
 }
 
 

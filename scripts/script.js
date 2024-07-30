@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   tabsCreate();
   lineWidthCalc();
-  slidesCreate();
+  slidesCreate('yandex');
 });
 
 
@@ -10,17 +10,24 @@ document.addEventListener('DOMContentLoaded', () => {
 function tabsCreate(){
   // Массив данных для кнопок
   const buttons = [
-      { id: 1, label: 'ЯНДЕКС КАРТЫ' },
-      { id: 2, label: 'APP STORE' },
-      { id: 3, label: 'GOOGLE PLAY' },
-      { id: 4, label: 'GOOGLE MAPS' },
-      { id: 5, label: 'САЙТ THOR' },
+      { id: 1, label: 'ЯНДЕКС КАРТЫ', platform: 'yandex' },
+      { id: 2, label: 'APP STORE', platform: 'appStore' },
+      { id: 3, label: 'GOOGLE PLAY', platform: 'googlePlay' },
+      { id: 4, label: 'GOOGLE MAPS', platform: 'googleMaps' },
+      { id: 5, label: 'САЙТ THOR', platform: 'thor' },
     ];
     
     // Функция для обработки кликов
     function handleClick(event) {
-      const buttonId = event.target.getAttribute('data-id');
-      console.log(`Button ${buttonId} clicked`);
+      const currentTab = event.target;
+
+      // Удаляем активный класс у всех элементов
+      const tabs = currentTab.parentNode.children;
+      for (let tab of tabs) {
+        tab.classList.remove('tabActive');
+      }
+
+      currentTab.classList.add('tabActive');
     }
     
     // Получаем контейнер для кнопок
@@ -72,30 +79,32 @@ function lineWidthCalc(){
   container.style.setProperty('--line-width', `${lineWidth}px`);
 }
 
-function slidesCreate(){
+function slidesCreate(platform){
   // Массив данных для слайдов
-  const slides = [
-    { platform: 'yandex', rating: '5', title: 'ОТЛИЧНАЯ СИСТЕМА ВЫХЛОПА', content: 'Месяц назад установил систему на свой авто, крутая штука, особенно удобно, что не нужно отвлекаться на телефон, чтобы переключить  звук, дети в пробках развлекаются с режимом звуков животных. В общем все остались довольны. Спасибо команде.', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
-    { platform: 'appStore', rating: '5', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от BBC212 — 17.04.2024 г.', assets: [] },
-    { platform: 'googlePlay', rating: '5', title: 'УДОБНОЕ ПРИЛОЖЕНИЕ', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от BBC212 — 17.04.2024 г.', assets: [] },
-    { platform: 'googleMaps', rating: '5', title: 'ОТЛИЧНАЯ СИСТЕМА ВЫХЛОПА', content: 'Месяц назад установил систему на свой авто, крутая штука, особенно удобно, что не нужно отвлекаться на телефон, чтобы переключить  звук, дети в пробках развлекаются с режимом звуков животных. В общем все остались довольны. Спасибо команде.', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
+  let slides = [
+    { platform: 'yandex', rating: '2', title: 'ОТЛИЧНАЯ СИСТЕМА ВЫХЛОПА', content: 'asndkapsjdasdjoasidj ioas dasdh jasdjsld jash dljkashd jkashd jashd jashd jkashdjashd jash djkashd jkashd jashdjkash djkashd jkdhk jasdhkjashd jkash djkashdjk shdkjash djkh  Месяц назад установил систему на свой авто, крутая штука, особенно удобно, что не нужно отвлекаться на телефон, чтобы переключить  звук, дети в пробках развлекаются с режимом звуков животных. В общем все остались довольны. Спасибо команде.', meta: 'от iDron88 — 28.01.2019 г.', assets: ['../assets/reviewAssets/auto.jpg', '../assets/reviewAssets/auto2.jpg', '../assets/reviewAssets/auto.jpg'] },
+    { platform: 'appStore', rating: '3', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от BBC212 — 17.04.2024 г.', assets: ['../assets/reviewAssets/video.mp4', '../assets/reviewAssets/video2.mp4'] },
+    { platform: 'googlePlay', rating: '5', title: 'УДОБНОЕ ПРИЛОЖЕНИЕ', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от BBC212 — 17.04.2024 г.', assets: ['../assets/reviewAssets/video2.mp4'] },
+    { platform: 'googleMaps', rating: '4', title: 'ОТЛИЧНАЯ СИСТЕМА ВЫХЛОПА', content: 'Месяц назад установил систему на свой авто, крутая штука, особенно удобно, что не нужно отвлекаться на телефон, чтобы переключить  звук, дети в пробках развлекаются с режимом звуков животных. В общем все остались довольны. Спасибо команде.', meta: 'от iDron88 — 28.01.2019 г.', assets: ['../assets/reviewAssets/auto2.jpg'] },
     { platform: 'googlePlay', rating: '5', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
-    { platform: 'googleMaps', rating: '5', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Месяц назад установил систему на свой авто, крутая штука, особенно удобно, что не нужно отвлекаться на телефон, чтобы переключить  звук, дети в пробках развлекаются с режимом звуков животных. В общем все остались довольны. Спасибо команде.', meta: 'от BBC212 — 17.04.2024 г.', assets: [] },
-    { platform: 'thor', rating: '5', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
+    { platform: 'googleMaps', rating: '5', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Месяц назад установил систему на свой авто, крутая штука, особенно удобно, что не нужно отвлекаться на телефон, чтобы переключить  звук, дети в пробках развлекаются с режимом звуков животных. В общем все остались довольны. Спасибо команде.', meta: 'от BBC212 — 17.04.2024 г.', assets: ['../assets/reviewAssets/auto2.jpg'] },
+    { platform: 'thor', rating: '5', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от iDron88 — 28.01.2019 г.', assets: ['../assets/reviewAssets/video.mp4'] },
     { platform: 'yandex', rating: '5', title: 'ОТЛИЧНАЯ СИСТЕМА ВЫХЛОПА', content: 'Месяц назад установил систему на свой авто, крутая штука, особенно удобно, что не нужно отвлекаться на телефон, чтобы переключить  звук, дети в пробках развлекаются с режимом звуков животных. В общем все остались довольны. Спасибо команде.', meta: 'от BBC212 — 17.04.2024 г.', assets: [] },
     { platform: 'appStore', rating: '5', title: 'УДОБНОЕ ПРИЛОЖЕНИЕ', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от BBC212 — 17.04.2024 г.', assets: [] },
     { platform: 'thor', rating: '5', title: 'УДОБНОЕ ПРИЛОЖЕНИЕ', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от BBC212 — 17.04.2024 г.', assets: [] },
     { platform: 'yandex', rating: '5', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
     { platform: 'appStore', rating: '5', title: 'ОТЛИЧНАЯ СИСТЕМА ВЫХЛОПА', content: 'Месяц назад установил систему на свой авто, крутая штука, особенно удобно, что не нужно отвлекаться на телефон, чтобы переключить  звук, дети в пробках развлекаются с режимом звуков животных. В общем все остались довольны. Спасибо команде.', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
-    { platform: 'yandex', rating: '5', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Установил систему примерно год назад, очень нравится! Отдельно хотелбы отметить работу приложения, все предельно понятно и удобно в использовании, часто пользуюсь функцией drive select, которую можно настраивать прямо в приложении! Ребятам за приложение огромный респект!)', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
+    { platform: 'yandex', rating: '5', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Установил систему примерно год назад, очень нравится! Отдельно хотелбы отметить работу приложения, все предельно понятно и удобно в использовании, часто пользуюсь функцией drive select, которую можно настраивать прямо в приложении! Ребятам за приложение огромный респект!)', meta: 'от iDron88 — 28.01.2019 г.', assets: ['../assets/reviewAssets/auto2.jpg', '../assets/reviewAssets/auto.jpg', '../assets/reviewAssets/video.mp4'] },
     { platform: 'appStore', rating: '5', title: 'ОТЛИЧНАЯ СИСТЕМА ВЫХЛОПА', content: 'Месяц назад установил систему на свой авто, крутая штука, особенно удобно, что не нужно отвлекаться на телефон, чтобы переключить  звук, дети в пробках развлекаются с режимом звуков животных. В общем все остались довольны. Спасибо команде.', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
     { platform: 'googlePlay', rating: '5', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Установил систему примерно год назад, очень нравится! Отдельно хотелбы отметить работу приложения, все предельно понятно и удобно в использовании, часто пользуюсь функцией drive select, которую можно настраивать прямо в приложении! Ребятам за приложение огромный респект!)', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
     { platform: 'googleMaps', rating: '5', title: 'ОТЛИЧНАЯ СИСТЕМА ВЫХЛОПА', content: 'Месяц назад установил систему на свой авто, крутая штука, особенно удобно, что не нужно отвлекаться на телефон, чтобы переключить  звук, дети в пробках развлекаются с режимом звуков животных. В общем все остались довольны. Спасибо команде.', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
     { platform: 'thor', rating: '5', title: 'ОТЛИЧНАЯ СИСТЕМА ВЫХЛОПА', content: 'Месяц назад установил систему на свой авто, крутая штука, особенно удобно, что не нужно отвлекаться на телефон, чтобы переключить  звук, дети в пробках развлекаются с режимом звуков животных. В общем все остались довольны. Спасибо команде.', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
     { platform: 'googlePlay', rating: '5', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от BBC212 — 17.04.2024 г.', assets: [] },
     { platform: 'googleMaps', rating: '5', title: 'УДОБНОЕ ПРИЛОЖЕНИЕ', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от BBC212 — 17.04.2024 г.', assets: [] },
-    { platform: 'thor', rating: '5', title: 'УДОБНОЕ ПРИЛОЖЕНИЕ', content: 'Месяц назад установил систему на свой авто, крутая штука, особенно удобно, что не нужно отвлекаться на телефон, чтобы переключить  звук, дети в пробках развлекаются с режимом звуков животных. В общем все остались довольны. Спасибо команде.', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
+    { platform: 'thor', rating: '5', title: 'УДОБНОЕ ПРИЛОЖЕНИЕ', content: 'Месяц назад установил систему на свой авто, крутая штука, особенно удобно, что не нужно отвлекаться на телефон, чтобы переключить  звук, дети в пробках развлекаются с режимом звуков животных. В общем все остались довольны. Спасибо команде.', meta: 'от iDron88 — 28.01.2019 г.', assets: ['../assets/reviewAssets/auto2.jpg'] },
   ];
+
+  slides = slides.filter(slide => slide.platform === platform);
   // Получаем sliderContainer
   const sliderWrapper = document.getElementById('sliderWrapper');
     
@@ -119,9 +128,10 @@ function slideCreate(slideInfo){
   slideReference.classList.add(slideInfo.platform);
   slideContent.appendChild(slideReference);
 
-  // Добавление платформы отзыва
+  // Добавление оценки отзыва
   const slideRatingContainer = document.createElement('div');
   slideRatingContainer.classList.add('ratingContainer');
+  // Добавляем звезды
   for (let i = 0; i < slideInfo.rating; i++) {
     const slideRating = document.createElement('div');
     slideRating.classList.add('star')
@@ -140,6 +150,10 @@ function slideCreate(slideInfo){
   slideText.innerText = slideInfo.content;
   slideText.classList.add('content');
   slideContent.appendChild(slideText);
+  // если в отзыве есть файлы, то ограничиваем текст до 200px
+  if(slideInfo.assets.length !== 0){
+    slideText.classList.add('limited');
+  }
 
   // Добавление даты и автора отзыва
   const slideMeta = document.createElement('p')
@@ -147,13 +161,82 @@ function slideCreate(slideInfo){
   slideMeta.classList.add('meta-info');
   slideContent.appendChild(slideMeta);
 
+
+
+  // Добавление картинок
+
+  if(slideInfo.assets.length !== 0){
+    const assetsContainer = document.createElement('div');
+    assetsContainer.classList.add('assetsContainer');
+    slideContent.appendChild(assetsContainer);
+
+    let images = [];
+    let videos = [];
+    
+    slideInfo.assets.forEach(asset => {
+      const fileExtension = asset.split('.').pop().toLowerCase();
+        if (['mp4', 'avi', 'mkv'].includes(fileExtension)) {
+            videos.push(asset);
+          } else if (['jpeg', 'jpg', 'webp', 'png'].includes(fileExtension)){
+            images.push(asset);
+        }
+    });
+
+    if (images.length !== 0){
+      const slideImages = document.createElement('div');
+      slideImages.classList.add('slideImage');
+      slideImages.style.backgroundImage = `url(${images[0]})`;
+      assetsContainer.appendChild(slideImages);
+      
+      const imagesCounter = document.createElement('div');
+      imagesCounter.classList.add('imagesCounter');
+      slideImages.appendChild(imagesCounter);
+      imagesCounter.innerHTML = '<div class="count">'+images.length+'</div>';
+    }
+    if (videos.length !== 0){
+      const slideVideo = showFirstFrame(videos[0]);
+      assetsContainer.appendChild(slideVideo);
+    }
+  }
+
+  function showFirstFrame(videoInfo) {
+    const video = document.createElement('video');
+    const slideVideo = document.createElement('div');
+    slideVideo.classList.add('slideVideo');
+    video.src = videoInfo;
+
+    video.addEventListener('loadeddata', function() {
+      video.currentTime = 0;
+    });
+
+    video.addEventListener('seeked', function() {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        
+        const dataURL = canvas.toDataURL();
+        slideVideo.style.backgroundImage = `url(${dataURL})`;
+        slideVideo.innerHTML = '<div class="playButton"></div>'
+
+    });
+    return slideVideo;
+  }
+
+
+  // Добавляем div.sliderContainer в div.swiper-slide 
   slide.appendChild(slideContent);
+
+
+  // Добавление кнопки "Посмотреть отзыв"
 
   const btnCheckReview = document.createElement('button');
   btnCheckReview.classList.add('btn');
   btnCheckReview.classList.add('btnWhite');
-
+  
   const btnText = document.createElement('div');
+  btnText.classList.add('btnText');
   btnText.innerText = "Посмотреть отзыв"
   btnCheckReview.appendChild(btnText);
 
@@ -163,5 +246,7 @@ function slideCreate(slideInfo){
 
   slide.appendChild(btnCheckReview);
 
+
+  // возращаем готовый div с класом swiper-slide
   return slide;
 }
