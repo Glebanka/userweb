@@ -4,6 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
   lineWidthCalc();
   slidesCreate('yandex');
 });
+// Создание и настройка слайдера
+var swiper = new Swiper('.swiper', {
+  direction: 'horizontal',
+  slidesPerView: 'auto',
+  spaceBetween: 24,
+  speed: 600,
+  createElements: true,
+  navigation: {
+  nextEl: '.sliderNextButton',
+  prevEl: '.sliderPrevButton',
+  },
+});
 
 
 // Создаем кнопки в зависимости от массива данных
@@ -26,8 +38,16 @@ function tabsCreate(){
       for (let tab of tabs) {
         tab.classList.remove('tabActive');
       }
-
+      const slides = document.getElementById('sliderWrapper');
+      while (slides.firstChild) {
+        slides.removeChild(slides.firstChild);
+      }
+      const dataId = currentTab.getAttribute('data-id');
+      slidesCreate(buttons[dataId-1].platform);
+      swiper.update();
+      swiper.slideTo(0, 0, false);
       currentTab.classList.add('tabActive');
+      lineWidthCalc();
     }
     
     // Получаем контейнер для кнопок
@@ -87,9 +107,11 @@ function slidesCreate(platform){
     { platform: 'googlePlay', rating: '5', title: 'УДОБНОЕ ПРИЛОЖЕНИЕ', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от BBC212 — 17.04.2024 г.', assets: ['../assets/reviewAssets/video2.mp4'] },
     { platform: 'googleMaps', rating: '4', title: 'ОТЛИЧНАЯ СИСТЕМА ВЫХЛОПА', content: 'Месяц назад установил систему на свой авто, крутая штука, особенно удобно, что не нужно отвлекаться на телефон, чтобы переключить  звук, дети в пробках развлекаются с режимом звуков животных. В общем все остались довольны. Спасибо команде.', meta: 'от iDron88 — 28.01.2019 г.', assets: ['../assets/reviewAssets/auto2.jpg'] },
     { platform: 'googlePlay', rating: '5', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
+    { platform: 'googlePlay', rating: '5', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
+    { platform: 'googlePlay', rating: '5', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
     { platform: 'googleMaps', rating: '5', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Месяц назад установил систему на свой авто, крутая штука, особенно удобно, что не нужно отвлекаться на телефон, чтобы переключить  звук, дети в пробках развлекаются с режимом звуков животных. В общем все остались довольны. Спасибо команде.', meta: 'от BBC212 — 17.04.2024 г.', assets: ['../assets/reviewAssets/auto2.jpg'] },
     { platform: 'thor', rating: '5', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от iDron88 — 28.01.2019 г.', assets: ['../assets/reviewAssets/video.mp4'] },
-    { platform: 'yandex', rating: '5', title: 'ОТЛИЧНАЯ СИСТЕМА ВЫХЛОПА', content: 'Месяц назад установил систему на свой авто, крутая штука, особенно удобно, что не нужно отвлекаться на телефон, чтобы переключить  звук, дети в пробках развлекаются с режимом звуков животных. В общем все остались довольны. Спасибо команде.', meta: 'от BBC212 — 17.04.2024 г.', assets: [] },
+    { platform: 'thor', rating: '5', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от iDron88 — 28.01.2019 г.', assets: ['../assets/reviewAssets/video.mp4'] },
     { platform: 'appStore', rating: '5', title: 'УДОБНОЕ ПРИЛОЖЕНИЕ', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от BBC212 — 17.04.2024 г.', assets: [] },
     { platform: 'thor', rating: '5', title: 'УДОБНОЕ ПРИЛОЖЕНИЕ', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от BBC212 — 17.04.2024 г.', assets: [] },
     { platform: 'yandex', rating: '5', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
@@ -98,6 +120,7 @@ function slidesCreate(platform){
     { platform: 'appStore', rating: '5', title: 'ОТЛИЧНАЯ СИСТЕМА ВЫХЛОПА', content: 'Месяц назад установил систему на свой авто, крутая штука, особенно удобно, что не нужно отвлекаться на телефон, чтобы переключить  звук, дети в пробках развлекаются с режимом звуков животных. В общем все остались довольны. Спасибо команде.', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
     { platform: 'googlePlay', rating: '5', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Установил систему примерно год назад, очень нравится! Отдельно хотелбы отметить работу приложения, все предельно понятно и удобно в использовании, часто пользуюсь функцией drive select, которую можно настраивать прямо в приложении! Ребятам за приложение огромный респект!)', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
     { platform: 'googleMaps', rating: '5', title: 'ОТЛИЧНАЯ СИСТЕМА ВЫХЛОПА', content: 'Месяц назад установил систему на свой авто, крутая штука, особенно удобно, что не нужно отвлекаться на телефон, чтобы переключить  звук, дети в пробках развлекаются с режимом звуков животных. В общем все остались довольны. Спасибо команде.', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
+    { platform: 'yandex', rating: '5', title: 'ОТЛИЧНАЯ СИСТЕМА ВЫХЛОПА', content: 'Месяц назад установил систему на свой авто, крутая штука, особенно удобно, что не нужно отвлекаться на телефон, чтобы переключить  звук, дети в пробках развлекаются с режимом звуков животных. В общем все остались довольны. Спасибо команде.', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
     { platform: 'thor', rating: '5', title: 'ОТЛИЧНАЯ СИСТЕМА ВЫХЛОПА', content: 'Месяц назад установил систему на свой авто, крутая штука, особенно удобно, что не нужно отвлекаться на телефон, чтобы переключить  звук, дети в пробках развлекаются с режимом звуков животных. В общем все остались довольны. Спасибо команде.', meta: 'от iDron88 — 28.01.2019 г.', assets: [] },
     { platform: 'googlePlay', rating: '5', title: 'ОТЛИЧНАЯ РЕШЕНИЕ ДЛЯ ТЮНИНГА ВЫХЛОПА', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от BBC212 — 17.04.2024 г.', assets: [] },
     { platform: 'googleMaps', rating: '5', title: 'УДОБНОЕ ПРИЛОЖЕНИЕ', content: 'Установил на дизельный Audi Q7 теперь рычит как Халк)  рекомендую!', meta: 'от BBC212 — 17.04.2024 г.', assets: [] },

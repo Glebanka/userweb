@@ -286,6 +286,19 @@ select{
   justify-content: space-between;
 
   border-radius: 16px;
+
+  animation: fadeIn 0.3s ease-out;
+}
+/* Определяем ключевые кадры для анимации */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      /* transform: translateY(20px); */
+  }
+  to {
+      opacity: 1;
+      /* transform: translateY(0); */
+  }
 }
 
 .sliderContainer{
@@ -399,7 +412,6 @@ div.slideImage .imagesCounter{
   height: 20px;
   border-radius: 9999px;
   background-color: #FFF;
-  
 }
 div.slideImage .imagesCounter .count{
   color: #0A0A0A;
