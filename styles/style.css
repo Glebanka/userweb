@@ -57,6 +57,9 @@ html{
   background-color: #0A0A0A;
   overflow-x: hidden;
 }
+body{
+  overflow-x: hidden;
+}
 html * {
   color: #FFF;
   text-decoration: none;
@@ -73,7 +76,7 @@ html * {
   border: 0;
   cursor: pointer;
 
-  transition: 0.3s;
+  transition: all 0.3s;
 }
 .btn:hover{
   background-color: #D33500;
@@ -101,11 +104,25 @@ html * {
 }
 
 
+/* Логотип */
+
+a.logo{
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+a.logo * {
+  font-family: Futura PT Cond, Helvetica, Arial;
+  font-size: 24px;
+}
+
 
 /* Хедер и навигация */
 
 header{
   background-color: #1D1D1D; 
+  width:100%;
 }
 nav {
   width: 984px;
@@ -159,7 +176,7 @@ section.bestOffer {
 
 .bestOfferWrapper p{
   font-family: Futura PT Cond, Helvetica, Arial;
-  font-size: 16px;
+  font-size: 24px;
 }
 
 
@@ -180,6 +197,7 @@ section.bestOffer {
 .mainText h2{
   font-size: 68px;
   font-family: Futura PT Cond, Helvetica, Arial;
+  font-weight: 400;
 }
 .mainText p{
   width: 756px;
@@ -271,26 +289,8 @@ select{
   display: flex;
   flex-flow: column;
   gap: 24px;
+  height: 624px;
 }
-
-
-/* Кнопка "посмотреть скрин" */
-
-.sliderImageContainer{
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  cursor: pointer;
-}
-.sliderImageContainer *{
-  color: rgba(255, 255, 255, 0.6);
-  transition: 0.3s;
-  text-decoration: underline;
-}
-.sliderImageContainer:hover *{
-  color: rgba(255, 255, 255, 1);
-}
-
 
 /* Оценка отзыва */
 
@@ -307,19 +307,31 @@ select{
 
 /* Текст слайдера */
 
-.sliderHeading{
+h3.sliderHeading{
   font-family: Futura PT Cond, Arial, Helvetica, sans-serif;
+  font-weight: 400;
   line-height: 100%;
   letter-spacing: -0.02em;
   font-size: 32px;
 }
 
-.sliderContainer p{
+.sliderContainer p.content{
   line-height: 140%;
   letter-spacing: -0.02em;
 
   font-size: 18px;
   color: rgba(255, 255, 255, 0.6);
+  position: relative;
+  
+}
+.sliderContainer p.content:after{
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  width: 280px;
+  height: 80px;
+  background-image: linear-gradient(rgba(29, 29, 29, 0), rgba(29, 29, 29, 1));
 }
 
 p.meta-info{
@@ -327,10 +339,93 @@ p.meta-info{
   color: rgba(255, 255, 255, 0.6);
 }
 
-.yandexLogo{
+div.sliderContainer .yandex{
   background-image: url(../assets/yandexLogo.svg);
   width: 144px;
   height: 24px;
+}
+div.sliderContainer .appStore{
+  background-image: url(../assets/appStoreLogo.svg);
+  width: 126px;
+  height: 28px;
+}
+div.sliderContainer .googlePlay{
+  background-image: url(../assets/googlePlayLogo.svg);
+  width: 123px;
+  height: 28px;
+}
+div.sliderContainer .googleMaps{
+  background-image: url(../assets/googleMapsLogo.svg);
+  width: 152px;
+  height: 28px;
+}
+div.sliderContainer .thor{
+  background-image: url(../assets/thorLogo.svg);
+  width: 94px;
+  height: 28px;
+}
+
+
+/* Кнопка "посмотреть отзыв" */
+
+.btnWhite{
+  width: 100%;
+  height: 64px;
+  background-color: rgba(255, 255, 255, 0.6);
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 23px 24px 23px 24px;
+  border-radius: 32px;
+  
+  font-family: Open Sans, Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+
+  /* position: relative; */
+  transition: all 0.3s;
+}
+
+.swiper-slide:hover .btnWhite{
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.btnWhite div{
+  color: black;
+  /* position: absolute; */
+  top: auto;
+  bottom: auto;
+
+  left: 58px;
+  transition: all 0.3s;
+}
+.btnWhite:hover div{
+  left: 28px;
+}
+
+.btnWhite div.expandSVG{
+  background-image: url(../assets/expand.svg);
+  width: 16px;
+  height: 16px;
+
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  scale: 0;
+
+  /* position: absolute; */
+  /* left: auto;
+  right: 28px; */
+
+  transition: all 0.3s;
+}
+
+.btnWhite:hover div.expandSVG{
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  scale: 1;
 }
 
 
@@ -368,7 +463,7 @@ p.meta-info{
 
 
 
-@media (max-width: 375px) {
+@media (max-width: 1200px) {
   /* функция пересчитывает: 1 rem = 10px */
   html {
     font-size: calc(10px + (10 * (100vw - 375px) / 375));
