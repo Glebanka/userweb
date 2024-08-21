@@ -1,0 +1,926 @@
+@font-face {
+    font-family: "Helvetica Neue";
+    src: url("../fonts/HelveticaNeueCyr-Roman.woff2") format("woff2"),
+        url("../fonts/HelveticaNeueCyr-Roman.woff") format("woff"),
+        url("../fonts/HelveticaNeueCyr-Roman.ttf") format("truetype"),
+        url('../fonts/HelveticaNeueCyr-Roman.eot') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: "Helvetica Neue";
+    src: url("../fonts/HelveticaNeueCyr-Bold.woff2") format("woff2"),
+        url("../fonts/HelveticaNeueCyr-Bold.woff") format("woff"),
+        url("../fonts/HelveticaNeueCyr-Bold.ttf") format("truetype"),
+        url('../fonts/HelveticaNeueCyr-Bold.eot') format('embedded-opentype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: block;
+}
+
+/* Основные стили */
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-weight: normal;
+}
+
+// переменные
+$black: rgba(29, 29, 29, 1);
+$grey: rgba(29, 29, 29, 0.5);
+$grey100: rgba(250, 250, 250, 1);
+$white: #FFF;
+$orange: rgba(255, 85, 58, 1);
+$basicFont: "Helvetica Neue", sans-serif;
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input[type=submit] {
+    border: 0;
+}
+
+body {
+    font-family: $basicFont;
+    color: $black;
+}
+
+
+@media only screen and (min-width:1024px),
+only screen and (orientation: landscape),
+only screen {
+    %fz16 {
+        font-size: 1.6rem;
+        line-height: 1;
+    }
+    %fz20 {
+        font-size: 2rem;
+        line-height: 1;
+    }
+
+    %fz24 {
+        font-size: 2.4rem;
+        line-height: 1;
+    }
+
+    %fz25 {
+        font-size: 2.5rem;
+        line-height: 1;
+    }
+
+    %fz40 {
+        font-size: 4rem;
+        line-height: 1;
+    }
+
+    %fz60 {
+        font-size: 6rem;
+        line-height: 1;
+    }
+
+    %fz80 {
+        font-size: 8rem;
+        line-height: 1;
+    }
+
+    .primaryHeading {
+        @extend %fz80;
+    }
+
+    .secondHeading {
+        @extend %fz60;
+    }
+
+    .thirdHeading {
+        @extend %fz40;
+    }
+
+    // Пересчет font-size 1rem = 10px
+    html {
+        font-size: 0.625vw;
+        overflow-x: hidden;
+    }
+
+    // переменная для градуса градиента
+    @property --angle {
+        syntax: '<angle>';
+        inherits: false;
+        initial-value: 90deg;
+    }
+
+    /* БЭМ-блоки */
+    .textGradient {
+        --angle: 90deg;
+        background: linear-gradient(var(--angle), #b95cf2 33.63%, #ff553a 100%);
+        background-clip: text;
+        color: transparent;
+
+        animation: 10s gradientAnimation infinite;
+    }
+
+    @keyframes gradientAnimation {
+        0% {
+            --angle: 90deg;
+        }
+
+        100% {
+            --angle: 450deg;
+        }
+    }
+
+    .mobBurgerMenu {
+        display: none;
+    }
+
+    /* БЭМ-блоки конец */
+
+
+
+    // Хедер
+
+    .header {
+        position: fixed;
+        z-index: 10;
+
+        width: 160rem;
+        max-width: 160rem;
+        top: 0;
+        background-color: $white;
+    }
+
+    .headerContainer {
+        padding: 2.4rem 0 2.4rem 0;
+        display: flex;
+    }
+
+    .headerLogo {
+        width: 9.6rem;
+        height: 4rem;
+    }
+
+    // Хедер конец
+
+
+    // Главный баннер
+
+    .mainBannerContainer{
+        padding: 6rem;
+        border: rgba(29, 29, 29, 0.6) 0.1rem solid;
+        border-radius: 1.6rem;
+    }
+
+    .workList {
+        display: flex;
+        gap: 4rem;
+    }
+    
+    .workList__item {
+        color: $grey;
+        @extend %fz16;
+    }
+    // Главный баннер конец
+
+
+
+    .partnersWrapper {
+        display: flex;
+        flex-flow: column;
+        gap: 5rem;
+        overflow: hidden;
+    }
+    
+    .partnersRow {
+        display: flex;
+        width: fit-content;
+    }
+    
+    .partnerContainer {
+        padding: 0 6rem 0 6rem;
+        height: 6rem;
+        display: flex;
+        align-items: center;
+        width: fit-content;
+        background-color: $grey100;
+        border-radius: 100px;
+    }
+    
+}
+
+@media only screen and (orientation: portrait) {
+
+    %fz20m {
+        font-size: 2rem;
+        line-height: 1;
+    }
+
+    %fz24m {
+        font-size: 2.4rem;
+        line-height: 1;
+    }
+
+    %fz25m {
+        font-size: 2.5rem;
+        line-height: 1;
+    }
+
+    %fz40m {
+        font-size: 4rem;
+        line-height: 1;
+    }
+
+    %fz60m {
+        font-size: 6rem;
+        line-height: 1;
+    }
+
+    %fz80m {
+        font-size: 8rem;
+        line-height: 1;
+    }
+
+    // Пересчет font-size 1rem = 10px
+    html {
+        font-size: 1.6667vw;
+    }
+
+    .primaryHeading {
+        @extend %fz80m;
+    }
+
+    .secondHeading {
+        @extend %fz60m;
+    }
+
+    .thirdHeading {
+        @extend %fz40m;
+    }
+
+
+    /* Хедер */
+    .header {
+        width: 60rem;
+        max-width: 60rem;
+    }
+
+    .headerContainer {
+        padding: 2.4rem 0 2.4rem 0;
+        justify-content: center;
+    }
+
+
+    /* Хедер конец */
+
+
+    /* Главный баннер */
+    .mainBannerContainer{
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+    }
+    .workList {
+        flex-flow: column;
+        align-items: end;
+    }
+
+    .workList__item {
+        @extend %fz20m;
+    }
+
+    /* Главный баннер конец */
+
+    // Мобильный бургер
+    .mobBurgerMenu {
+        position: fixed;
+        z-index: 10;
+
+        width: 60rem;
+        max-width: 60rem;
+        bottom: 0;
+    }
+
+    .mobBurgerMenu__btns {
+        display: flex;
+    }
+
+    .mobBurgerMenu__btn {
+        width: 30rem;
+        height: 10rem;
+
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobBurgerMenu__btnText {
+        color: $white;
+        @extend %fz25m;
+    }
+
+    .burgerBtn {
+        background-color: $black;
+    }
+
+    .contactBtn {
+        background-color: $orange;
+    }
+
+    .burgerIcon {
+        position: absolute;
+        left: 4rem;
+        top: 50%;
+        translate: 0 -50%;
+    }
+
+    // Мобильный бургер конец
+
+    // секция партнеров
+    .partnersWrapper {
+        gap: 2rem; 
+    }
+
+    .partnerContainer {
+        padding: 0 3rem 0 3rem;
+        height: 6rem;
+    }
+
+    .partnerLogo {
+        max-height: 5.4rem;
+    }
+
+    // секция партнеров конец
+
+
+    .service {
+        display: flex;
+        flex-flow: column;
+        gap: 2rem;
+    }
+
+
+    .servicesWrapper {
+        display: flex;
+        flex-flow: column;
+        gap: 10rem;
+    }
+
+    .serviceText {
+        color: $grey;
+        font-size: 2.5rem;
+        line-height: 1;
+    }
+
+    .techsContainer {
+        display: flex;
+        column-gap: 0.5rem;
+        row-gap: 1rem;
+        flex-flow: wrap;
+    }
+
+    .tech {
+        padding: 1.2rem 2rem;
+        opacity: 0.5;
+        border-radius: 99px;
+        border: 0.1rem solid $black;
+
+        @extend %fz20m;
+    }
+
+
+    // слайдеры с проектами
+    .projectsContainer {
+        display: flex;
+        gap: 20rem;
+        flex-flow: column;
+    }
+
+    .projects__dateText {
+        @extend %fz25m;
+    }
+
+    .projects__text {
+        @extend %fz25m;
+        opacity: 0.5;
+    }
+
+    .projectsSlider {
+        overflow: hidden;
+        position: relative;
+
+        &__navigation {
+            width: max-content;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            position: absolute;
+            z-index: 2;
+            transform: translate(0, -300%);
+
+            .swiper-pagination-bullet {
+                background-color: $white;
+                opacity: 1;
+                width: 1rem;
+                height: 1rem;
+            }
+
+            .swiper-pagination-bullet-active {
+                background-color: $orange;
+            }
+        }
+
+        &.swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
+        .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+            margin: 0;
+        }
+    }
+
+    .projectSlide {
+        overflow-x: hidden;
+
+        &:not(:last-child) {
+            margin-right: 1rem;
+        }
+    }
+
+    .projectSlider__asset {
+        width: 100%;
+        height: 56rem;
+        object-fit: cover;
+    }
+
+    .projectContainer {
+        display: flex;
+        gap: 3rem;
+        flex-flow: column;
+    }
+
+    .projectsMainInfo {
+        display: flex;
+        gap: 1.5rem;
+        flex-flow: column;
+    }
+
+    .projectTitleContainer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .projectTitle {
+        @extend %fz25m;
+    }
+
+    .projectYears {
+        @extend %fz25m;
+    }
+
+    .projectDesc {
+        @extend %fz25m;
+        opacity: 0.5;
+        text-transform: uppercase;
+    }
+
+    .projectLinks {
+        display: flex;
+        flex-flow: column;
+        gap: 2rem;
+
+        &__wrapper {
+            display: flex;
+            flex-flow: wrap;
+            gap: 1rem;
+
+            .btn {
+                padding: 2rem 1.8rem;
+                display: flex;
+                align-items: center;
+                border: 0.1rem solid $black;
+                @extend %fz20m;
+                border-radius: 1rem;
+            }
+        }
+
+        &__text {
+            @extend %fz20m;
+        }
+    }
+
+    .projectLink {
+        padding: 2rem 1.8rem;
+        border-radius: 1rem;
+        display: flex;
+        gap: 2rem;
+        width: fit-content;
+        align-items: center;
+        color: $white;
+        @extend %fz20m;
+
+        &__arrowSVG {
+            width: 2.4rem;
+            height: 2.4rem;
+        }
+
+        &.dprofileLink {
+            background: rgba(254, 86, 57, 1);
+
+            .projectLink__logo {
+                width: 9.9rem;
+                height: 2.4rem;
+            }
+        }
+
+        &.workspaceLink {
+            background: rgba(0, 31, 49, 1);
+
+            .projectLink__logo {
+                width: 12.4rem;
+                height: 1.6rem;
+            }
+        }
+
+        &.siteLink {
+            background: linear-gradient(93.49deg, #B95CF2 0.81%, #FF553A 100%);
+        }
+
+    }
+
+
+    // слайдеры с проектами конец
+
+    // форма обратной связи
+    .contactUsForm {
+        position: relative;
+        z-index: 2;
+        background-color: $black;
+
+        display: flex;
+        flex-flow: column;
+        gap: 3rem;
+
+        padding-top: 4rem;
+        padding-bottom: 3rem;
+
+        &__title {
+            color: $white;
+        }
+
+        &__text {
+            opacity: 0.5;
+            color: $white;
+            @extend %fz20m;
+        }
+    }
+
+
+    .tasksSelect__title {
+        color: $white;
+        @extend %fz24m;
+    }
+
+    .tasksWrapper {
+        display: flex;
+        column-gap: 0.5rem;
+        row-gap: 1rem;
+        flex-flow: wrap;
+    }
+
+    .task {
+        opacity: 0.6;
+        padding: 1.2rem 2rem;
+        border: $white solid 0.1rem;
+        color: $white;
+        border-radius: 99px;
+
+        @extend %fz20m;
+
+        transition: all 0.3s;
+    }
+
+    .task.active {
+        background-color: $white;
+        color: $black;
+        opacity: 1;
+    }
+
+    .inputsContainer {
+        display: flex;
+        gap: 1rem;
+        flex-flow: column;
+    }
+
+    .inputContainer {
+        position: relative;
+        display: flex;
+        justify-content: end;
+    }
+
+    .input {
+        outline: none;
+        max-width: 100%;
+        width: 100%;
+        height: 8rem;
+
+        border: 0;
+        border-radius: 1rem;
+        padding: 2.8rem 0 2.8rem 2rem;
+        background-color: $white;
+
+        @extend %fz24m;
+
+        border: solid $white 0.3rem;
+
+        transition: width 0.3s cubic-bezier(0.56, 0.01, 0.95, 0.94), height 0.3s cubic-bezier(0.56, 0.01, 0.95, 0.94),
+            margin 0.3s cubic-bezier(0.56, 0.01, 0.95, 0.94), border 0.3s cubic-bezier(0.56, 0.01, 0.95, 0.94);
+    }
+
+    .label {
+        position: absolute;
+        left: 2rem;
+        top: 2.8rem;
+        z-index: 2;
+        @extend %fz24m;
+
+        transition: color 0.3s cubic-bezier(1, 0, .86, .42);
+    }
+
+    .inputText {
+        min-width: 100%;
+    }
+
+    .input.filled {
+        border: rgb(19, 189, 16) solid 0.3rem;
+    }
+
+    .input:invalid.filled {
+        border: rgb(189, 16, 16) solid 0.3rem;
+    }
+
+    .input.required {
+        border: rgb(189, 16, 16) solid 0.3rem;
+    }
+
+    .input.inputName.filled,
+    .input.inputName:focus {
+        width: 38.4rem;
+    }
+
+    .input.inputTel.filled,
+    .input.inputTel:focus {
+        width: 39.9rem;
+    }
+
+    .input.inputMail.filled,
+    .input.inputMail:focus {
+        width: 43.9rem;
+    }
+
+    .input.inputText.filled,
+    .input.inputText:focus {
+        min-width: 100%;
+        height: 17rem;
+        margin-top: 6.2rem;
+    }
+
+    .input.inputFile.filled {
+        visibility: hidden;
+        position: absolute;
+        opacity: 0;
+        width: 0px;
+    }
+
+    .inputPreview {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        bottom: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 2rem;
+
+        transition: visibility 0.3s, opacity 0.3s;
+    }
+
+    .inputPreview__filename {
+        @extend %fz24m;
+        color: $white;
+        max-width: 46rem;
+    }
+
+    .deleteFileLogo {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .input.inputFile.filled~.inputPreview {
+        visibility: visible;
+        position: inherit;
+        opacity: 1;
+    }
+
+    .input.filled~.label,
+    .input:focus~.label {
+        color: $white;
+    }
+
+    .inputText {
+        height: 23.2rem;
+    }
+
+    .inputFile {
+        position: relative;
+        bottom: 0;
+        opacity: 1;
+        display: flex;
+        align-items: center;
+        padding-top: 0;
+        padding-bottom: 0;
+        transition: visibility 0.3s, opacity 0.3s;
+    }
+
+    .inputFileLogo {
+        width: 3.4rem;
+        height: 3.4rem;
+        position: absolute;
+        bottom: 2.3rem;
+        top: 2.3rem;
+        right: 2rem;
+    }
+
+    .contactUsForm__infoText {
+        @extend %fz20m;
+        opacity: 0.5;
+        color: $white;
+    }
+
+    .contactUsForm__btn {
+        background-color: $orange;
+        color: $white;
+        padding: 4.5rem 0;
+        border-radius: 1rem;
+
+        font-size: 3rem;
+        line-height: 1;
+    }
+
+    // форма обратной связи конец
+
+
+    // секция с контактами
+    .contactUs {
+        transform: translate(0, -45%);
+    }
+
+    .usernameLink {
+        text-align: end;
+        @extend %fz40m;
+    }
+
+    .reachUsContainer {
+        display: flex;
+        flex-flow: column;
+        gap: 5rem;
+    }
+
+    .reachUs {
+        display: flex;
+        flex-flow: column;
+        gap: 1rem;
+
+        &__method,
+        &__schedule {
+            opacity: 0.5;
+            @extend %fz20m;
+        }
+    }
+
+    // секция с контактами конец
+
+
+
+
+    // футер
+    .footerText {
+        font-size: 2rem;
+        line-height: 1;
+    }
+
+    // футер конец
+
+
+
+
+
+
+}
+
+
+/* БЭМ-модификаторы (всегда снизу страницы) */
+
+// .bg-black{
+//     background-color: $black;
+// }
+.hidden {
+    visibility: hidden;
+    position: absolute;
+}
+
+.rightCol {
+    max-width: 28rem;
+    transform: translate(100%);
+}
+
+
+.mt-200{
+    margin-top: 20rem;
+}
+.mt-182{
+    margin-top: 18.2rem;
+}
+.mt-164 {
+    margin-top: 16.4rem;
+}
+.mt-160{
+    margin-top: 16rem;
+}
+.mt-100 {
+    margin-top: 10rem;
+}
+.px-60 {
+    padding-left: 6rem;
+    padding-right: 6rem;
+}
+.w-916{
+    width: 91.6rem;
+}
+
+@media only screen and (orientation: portrait) {
+    .mt-188m {
+        margin-top: 18.8rem;
+    }
+
+    .mt-100m {
+        margin-top: 10rem;
+    }
+
+    .mt-150m {
+        margin-top: 15rem;
+    }
+
+    .mt-200m {
+        margin-top: 20rem;
+    }
+
+    .mt-500m {
+        margin-top: 50rem;
+    }
+
+    .mt-60m {
+        margin-top: 6rem;
+    }
+
+    .mt-50m {
+        margin-top: 5rem;
+    }
+
+    .mb-220m {
+        margin-bottom: 22rem;
+    }
+
+    .mb-100m {
+        margin-bottom: 10rem;
+    }
+
+    .mb-30m {
+        margin-bottom: 3rem;
+    }
+
+    .px-20m {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .w-autom{
+        width: auto;
+    }
+}
+
+
+/* Конец основных стилей */
