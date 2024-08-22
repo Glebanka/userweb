@@ -48,11 +48,31 @@ body {
 }
 
 @media only screen and (min-width: 1024px), only screen and (orientation: landscape), only screen {
+  .projectLinks__text, .tech {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
   .workList__item {
     font-size: 1.6rem;
     line-height: 1;
   }
-  .thirdHeading {
+  .projectLink, .openReviewBtn {
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+  .copyright, .reachUs__method, .reachUs__schedule, .contactUsForm__infoText, .task, .contactUsForm__text, .projectDesc, .projectYears, .projectTitle {
+    font-size: 2rem;
+    line-height: 1;
+  }
+  .inputPreview__filename, .label, .input, .tasksSelect__title {
+    font-size: 2.4rem;
+    line-height: 1;
+  }
+  .projects__text, .projects__dateText, .serviceText {
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+  .usernameLink, .thirdHeading {
     font-size: 4rem;
     line-height: 1;
   }
@@ -104,10 +124,77 @@ body {
   .headerContainer {
     padding: 2.4rem 0 2.4rem 0;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   .headerLogo {
     width: 9.6rem;
     height: 4rem;
+  }
+  .headerNav {
+    display: flex;
+    align-items: center;
+    border-radius: 0.8rem;
+    padding: 0.8rem 0.8rem 0.8rem 7.2rem;
+    height: 6rem;
+    background-color: rgb(29, 29, 29);
+  }
+  .hoveredLink {
+    position: absolute;
+    width: 14.7rem;
+    height: 100%;
+    background-color: rgb(255, 85, 58);
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    transition: left 300ms ease-out, width 150ms ease-out, opacity 150ms ease-out, right 300ms ease-out;
+    opacity: 1;
+    z-index: 1;
+  }
+  .burger {
+    position: absolute;
+    cursor: pointer;
+    width: 2.4rem;
+    transform: translate(-4.8rem);
+    transition: vibility 0.5s ease-out, opacity 0.5s ease-out;
+  }
+  .burger * {
+    transition: all 0.3s;
+  }
+  .burgerActive {
+    width: 2.4rem;
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    transform: translate(-4.8rem);
+    transition: vibility 0.5s ease-out, opacity 0.5s ease-out;
+  }
+  .navLink {
+    color: #FFF;
+    z-index: 2;
+    padding: 1.5rem 1.6rem;
+    cursor: pointer;
+    font-size: 1.4rem;
+    line-height: 1;
+  }
+  .navLinkText {
+    white-space: nowrap;
+  }
+  .hoveredLink {
+    background-color: rgb(255, 85, 58);
+    border-radius: 0.8rem;
+  }
+  .navigation {
+    position: relative;
+    width: 14.7rem;
+    overflow: hidden;
+    display: flex;
+    flex-flow: row-reverse;
+    transition: width 0.5s cubic-bezier(0.56, 0.01, 0.95, 0.94);
+  }
+  .navigation.active {
+    width: 40.2rem;
   }
   .mainBannerContainer {
     padding: 6rem;
@@ -132,7 +219,7 @@ body {
     width: fit-content;
   }
   .partnerContainer {
-    padding: 0 6rem 0 6rem;
+    padding: 0 3rem 0 3rem;
     height: 6rem;
     display: flex;
     align-items: center;
@@ -140,136 +227,60 @@ body {
     background-color: rgb(250, 250, 250);
     border-radius: 100px;
   }
-}
-@media only screen and (orientation: portrait) {
-  .reachUs__method, .reachUs__schedule, .contactUsForm__infoText, .task, .contactUsForm__text, .projectLink, .projectLinks__text, .projectLinks__wrapper .btn, .tech, .workList__item {
-    font-size: 2rem;
-    line-height: 1;
-  }
-  .inputPreview__filename, .label, .input, .tasksSelect__title {
-    font-size: 2.4rem;
-    line-height: 1;
-  }
-  .projectDesc, .projectYears, .projectTitle, .projects__text, .projects__dateText, .mobBurgerMenu__btnText {
-    font-size: 2.5rem;
-    line-height: 1;
-  }
-  .usernameLink, .thirdHeading {
-    font-size: 4rem;
-    line-height: 1;
-  }
-  .secondHeading {
-    font-size: 6rem;
-    line-height: 1;
-  }
-  .primaryHeading {
-    font-size: 8rem;
-    line-height: 1;
-  }
-  html {
-    font-size: 1.6667vw;
-  }
-  /* Хедер */
-  .header {
-    width: 60rem;
-    max-width: 60rem;
-  }
-  .headerContainer {
-    padding: 2.4rem 0 2.4rem 0;
-    justify-content: center;
-  }
-  /* Хедер конец */
-  /* Главный баннер */
-  .mainBannerContainer {
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-  }
-  .workList {
+  .servicesWrapper {
+    display: flex;
     flex-flow: column;
-    align-items: end;
-  }
-  /* Главный баннер конец */
-  .mobBurgerMenu {
-    position: fixed;
-    z-index: 10;
-    width: 60rem;
-    max-width: 60rem;
-    bottom: 0;
-  }
-  .mobBurgerMenu__btns {
-    display: flex;
-  }
-  .mobBurgerMenu__btn {
-    width: 30rem;
-    height: 10rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .mobBurgerMenu__btnText {
-    color: #FFF;
-  }
-  .burgerBtn {
-    background-color: rgb(29, 29, 29);
-  }
-  .contactBtn {
-    background-color: rgb(255, 85, 58);
-  }
-  .burgerIcon {
-    position: absolute;
-    left: 4rem;
-    top: 50%;
-    translate: 0 -50%;
-  }
-  .partnersWrapper {
-    gap: 2rem;
-  }
-  .partnerContainer {
-    padding: 0 3rem 0 3rem;
-    height: 6rem;
-  }
-  .partnerLogo {
-    max-height: 5.4rem;
+    gap: 20rem;
   }
   .service {
     display: flex;
     flex-flow: column;
-    gap: 2rem;
+    gap: 3rem;
   }
-  .servicesWrapper {
+  .serviceTextContainer {
     display: flex;
-    flex-flow: column;
     gap: 10rem;
   }
   .serviceText {
     color: rgba(29, 29, 29, 0.5);
-    font-size: 2.5rem;
-    line-height: 1;
   }
   .techsContainer {
     display: flex;
     column-gap: 0.5rem;
     row-gap: 1rem;
     flex-flow: wrap;
+    height: fit-content;
   }
   .tech {
     padding: 1.2rem 2rem;
     opacity: 0.5;
     border-radius: 99px;
     border: 0.1rem solid rgb(29, 29, 29);
+    height: fit-content;
   }
   .projectsContainer {
     display: flex;
     gap: 20rem;
     flex-flow: column;
+    align-items: center;
+  }
+  .projects__textContainer {
+    width: 100%;
+    display: flex;
   }
   .projects__text {
     opacity: 0.5;
   }
+  .projectContainer {
+    padding-left: 6rem;
+    width: 100%;
+    display: flex;
+    gap: 12rem;
+  }
   .projectsSlider {
     overflow: hidden;
     position: relative;
+    width: 56rem;
   }
   .projectsSlider__navigation {
     width: max-content;
@@ -303,24 +314,42 @@ body {
     width: 100%;
     height: 56rem;
     object-fit: cover;
-  }
-  .projectContainer {
-    display: flex;
-    gap: 3rem;
-    flex-flow: column;
+    border-radius: 1rem;
+    pointer-events: none;
   }
   .projectsMainInfo {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
     flex-flow: column;
+  }
+  .projectInfo {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    width: 56rem;
+  }
+  .projectInfo__textContainer {
+    display: flex;
+    flex-flow: column;
+    gap: 3rem;
   }
   .projectTitleContainer {
     display: flex;
     justify-content: space-between;
   }
-  .projectDesc {
+  .projectYears {
     opacity: 0.5;
+  }
+  .projectDesc {
     text-transform: uppercase;
+  }
+  .openReviewBtn {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    border: 0.1rem solid rgb(29, 29, 29);
+    border-radius: 1rem;
+    cursor: pointer;
   }
   .projectLinks {
     display: flex;
@@ -332,39 +361,32 @@ body {
     flex-flow: wrap;
     gap: 1rem;
   }
-  .projectLinks__wrapper .btn {
-    padding: 2rem 1.8rem;
-    display: flex;
-    align-items: center;
-    border: 0.1rem solid rgb(29, 29, 29);
-    border-radius: 1rem;
-  }
   .projectLink {
-    padding: 2rem 1.8rem;
+    padding: 1.5rem;
     border-radius: 1rem;
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     width: fit-content;
     align-items: center;
     color: #FFF;
   }
   .projectLink__arrowSVG {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 2rem;
+    height: 2rem;
   }
   .projectLink.dprofileLink {
     background: rgb(254, 86, 57);
   }
   .projectLink.dprofileLink .projectLink__logo {
-    width: 9.9rem;
-    height: 2.4rem;
+    width: 8.2rem;
+    height: 2rem;
   }
   .projectLink.workspaceLink {
     background: rgb(0, 31, 49);
   }
   .projectLink.workspaceLink .projectLink__logo {
-    width: 12.4rem;
-    height: 1.6rem;
+    width: 10.8rem;
+    height: 1.4rem;
   }
   .projectLink.siteLink {
     background: linear-gradient(93.49deg, #B95CF2 0.81%, #FF553A 100%);
@@ -374,10 +396,8 @@ body {
     z-index: 2;
     background-color: rgb(29, 29, 29);
     display: flex;
-    flex-flow: column;
-    gap: 3rem;
-    padding-top: 4rem;
-    padding-bottom: 3rem;
+    padding-top: 15rem;
+    padding-bottom: 15rem;
   }
   .contactUsForm__title {
     color: #FFF;
@@ -385,6 +405,16 @@ body {
   .contactUsForm__text {
     opacity: 0.5;
     color: #FFF;
+  }
+  .contactUsForm__textContainer, .contactUsForm__inputsContainer {
+    display: flex;
+    flex-flow: column;
+    gap: 3rem;
+  }
+  .tasksSelect {
+    display: flex;
+    flex-flow: column;
+    gap: 3rem;
   }
   .tasksSelect__title {
     color: #FFF;
@@ -402,6 +432,7 @@ body {
     color: #FFF;
     border-radius: 99px;
     transition: all 0.3s;
+    cursor: pointer;
   }
   .task.active {
     background-color: #FFF;
@@ -431,6 +462,7 @@ body {
     transition: width 0.3s cubic-bezier(0.56, 0.01, 0.95, 0.94), height 0.3s cubic-bezier(0.56, 0.01, 0.95, 0.94), margin 0.3s cubic-bezier(0.56, 0.01, 0.95, 0.94), border 0.3s cubic-bezier(0.56, 0.01, 0.95, 0.94);
   }
   .label {
+    cursor: text;
     position: absolute;
     left: 2rem;
     top: 2.8rem;
@@ -451,15 +483,15 @@ body {
   }
   .input.inputName.filled,
   .input.inputName:focus {
-    width: 38.4rem;
+    width: 57.5rem;
   }
   .input.inputTel.filled,
   .input.inputTel:focus {
-    width: 39.9rem;
+    width: 59rem;
   }
   .input.inputMail.filled,
   .input.inputMail:focus {
-    width: 43.9rem;
+    width: 63rem;
   }
   .input.inputText.filled,
   .input.inputText:focus {
@@ -513,6 +545,7 @@ body {
     padding-top: 0;
     padding-bottom: 0;
     transition: visibility 0.3s, opacity 0.3s;
+    cursor: pointer;
   }
   .inputFileLogo {
     width: 3.4rem;
@@ -531,11 +564,21 @@ body {
     color: #FFF;
     padding: 4.5rem 0;
     border-radius: 1rem;
+    cursor: pointer;
     font-size: 3rem;
     line-height: 1;
   }
+  .footer {
+    transform: translate(0, -35%);
+  }
   .contactUs {
-    transform: translate(0, -45%);
+    display: flex;
+    position: relative;
+  }
+  .contactUs__titleContainer {
+    display: flex;
+    flex-flow: column;
+    gap: 5rem;
   }
   .usernameLink {
     text-align: end;
@@ -553,6 +596,200 @@ body {
   .reachUs__method, .reachUs__schedule {
     opacity: 0.5;
   }
+  .copyright {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}
+@media only screen and (orientation: portrait) {
+  .reachUs__method, .reachUs__schedule, .projectLink, .projectLinks__text, .openReviewBtn, .tech, .workList__item {
+    font-size: 2rem;
+    line-height: 1;
+  }
+  .input {
+    font-size: 2.4rem;
+    line-height: 1;
+  }
+  .projectDesc, .projectYears, .projectTitle, .projects__text, .projects__dateText, .mobBurgerMenu__btnText {
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+  .usernameLink, .thirdHeading {
+    font-size: 4rem;
+    line-height: 1;
+  }
+  .secondHeading {
+    font-size: 6rem;
+    line-height: 1;
+  }
+  .primaryHeading {
+    font-size: 8rem;
+    line-height: 1;
+  }
+  html {
+    font-size: 1.6667vw;
+  }
+  /* Хедер */
+  .header {
+    width: 60rem;
+    max-width: 60rem;
+  }
+  .headerContainer {
+    padding: 2.4rem 0 2.4rem 0;
+    justify-content: center;
+  }
+  .headerNav {
+    display: none;
+  }
+  /* Хедер конец */
+  /* Главный баннер */
+  .mainBannerContainer {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+  }
+  .workList {
+    flex-flow: column;
+    align-items: end;
+  }
+  /* Главный баннер конец */
+  .mobBurgerMenu {
+    display: block;
+    position: fixed;
+    z-index: 10;
+    width: 60rem;
+    max-width: 60rem;
+    bottom: 0;
+  }
+  .mobBurgerMenu__btns {
+    display: flex;
+  }
+  .mobBurgerMenu__btn {
+    width: 30rem;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mobBurgerMenu__btnText {
+    color: #FFF;
+  }
+  .burgerBtn {
+    background-color: rgb(29, 29, 29);
+  }
+  .contactBtn {
+    background-color: rgb(255, 85, 58);
+  }
+  .burgerIcon {
+    position: absolute;
+    left: 4rem;
+    top: 50%;
+    translate: 0 -50%;
+  }
+  .partnersWrapper {
+    gap: 2rem;
+  }
+  .partnerLogo {
+    max-height: 5.4rem;
+  }
+  .service {
+    flex-flow: column;
+    gap: 2rem;
+  }
+  .servicesWrapper {
+    gap: 10rem;
+  }
+  .serviceTextContainer {
+    flex-flow: column;
+    gap: 3rem;
+  }
+  .projects__textContainer {
+    display: block;
+  }
+  .projects__text {
+    opacity: 0.5;
+  }
+  .projectContainer {
+    padding: 0;
+    gap: 3rem;
+    flex-flow: column;
+  }
+  .projectInfo {
+    gap: 5rem;
+  }
+  .projectsMainInfo {
+    gap: 1.5rem;
+  }
+  .projectYears {
+    opacity: 1;
+  }
+  .projectDesc {
+    opacity: 0.5;
+    text-transform: uppercase;
+  }
+  .openReviewBtn {
+    padding: 2rem 1.8rem;
+  }
+  .projectLink {
+    padding: 2rem 1.8rem;
+    gap: 2rem;
+  }
+  .projectLink__arrowSVG {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  .projectLink.dprofileLink .projectLink__logo {
+    width: 9.9rem;
+    height: 2.4rem;
+  }
+  .projectLink.workspaceLink .projectLink__logo {
+    width: 12.4rem;
+    height: 1.6rem;
+  }
+  .projectLink.siteLink {
+    background: linear-gradient(93.49deg, #B95CF2 0.81%, #FF553A 100%);
+  }
+  .contactUsForm {
+    flex-flow: column;
+    gap: 3rem;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+  }
+  .input.inputName.filled,
+  .input.inputName:focus {
+    width: 38.4rem;
+  }
+  .input.inputTel.filled,
+  .input.inputTel:focus {
+    width: 39.9rem;
+  }
+  .input.inputMail.filled,
+  .input.inputMail:focus {
+    width: 43.9rem;
+  }
+  .contactUs {
+    flex-flow: column;
+  }
+  .usernameLink {
+    text-align: end;
+  }
+  .reachUsContainer {
+    display: flex;
+    flex-flow: column;
+    gap: 5rem;
+  }
+  .reachUs {
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+  }
+  .reachUs__method, .reachUs__schedule {
+    opacity: 0.5;
+  }
+  .copyright {
+    position: relative;
+  }
   .footerText {
     font-size: 2rem;
     line-height: 1;
@@ -564,9 +801,24 @@ body {
   position: absolute;
 }
 
-.rightCol {
-  max-width: 28rem;
-  transform: translate(100%);
+.mt-485 {
+  margin-top: 48.5rem;
+}
+
+.mt-400 {
+  margin-top: 40rem;
+}
+
+.mt-300 {
+  margin-top: 30rem;
+}
+
+.mt-260 {
+  margin-top: 26rem;
+}
+
+.mt-230 {
+  margin-top: 23rem;
 }
 
 .mt-200 {
@@ -589,6 +841,23 @@ body {
   margin-top: 10rem;
 }
 
+.mt-70 {
+  margin-top: 7rem;
+}
+
+.mb-100 {
+  margin-bottom: 10rem;
+}
+
+.mb-50 {
+  margin-bottom: 5rem;
+}
+
+.mx-auto {
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .px-60 {
   padding-left: 6rem;
   padding-right: 6rem;
@@ -596,6 +865,44 @@ body {
 
 .w-916 {
   width: 91.6rem;
+}
+
+.w-900 {
+  width: 90rem;
+}
+
+.w-1200 {
+  width: 120rem;
+}
+
+.w-740 {
+  max-width: 74rem;
+  min-width: 74rem;
+  width: 74rem;
+}
+
+.w-600 {
+  width: 60rem;
+}
+
+.w-560 {
+  width: 56rem;
+}
+
+.w-536 {
+  width: 53.6rem;
+}
+
+.w-500 {
+  width: 50rem;
+}
+
+.w-280 {
+  width: 28rem;
+}
+
+.w-50perc {
+  width: 50%;
 }
 
 @media only screen and (orientation: portrait) {
@@ -620,6 +927,9 @@ body {
   .mt-50m {
     margin-top: 5rem;
   }
+  .mt-0m {
+    margin-top: 0;
+  }
   .mb-220m {
     margin-bottom: 22rem;
   }
@@ -633,8 +943,18 @@ body {
     padding-left: 2rem;
     padding-right: 2rem;
   }
-  .w-autom {
-    width: auto;
+  .w-unsetm {
+    max-width: unset;
+    min-width: unset;
+    width: unset;
+  }
+  .w-560m {
+    max-width: 56rem;
+    min-width: 56rem;
+    width: 56rem;
+  }
+  .rightColm {
+    transform: translate(100%);
   }
 }
 /* Конец основных стилей */

@@ -66,10 +66,21 @@ body {
 @media only screen and (min-width:1024px),
 only screen and (orientation: landscape),
 only screen {
+    %fz15 {
+        font-size: 1.5rem;
+        line-height: 1;
+    }
+
     %fz16 {
         font-size: 1.6rem;
         line-height: 1;
     }
+
+    %fz18 {
+        font-size: 1.8rem;
+        line-height: 1;
+    }
+
     %fz20 {
         font-size: 2rem;
         line-height: 1;
@@ -168,6 +179,8 @@ only screen {
     .headerContainer {
         padding: 2.4rem 0 2.4rem 0;
         display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .headerLogo {
@@ -175,12 +188,82 @@ only screen {
         height: 4rem;
     }
 
+    .headerNav {
+        display: flex;
+        align-items: center;
+      
+        border-radius: 0.8rem;
+        padding: 0.8rem 0.8rem 0.8rem 7.2rem;
+        height: 6rem;
+      
+        background-color: $black;
+      }
+      .hoveredLink {
+        position: absolute;
+        width: 14.7rem;
+        height: 100%;
+        background-color: $orange;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        transition: left 300ms ease-out, width 150ms ease-out, opacity 150ms ease-out, right 300ms ease-out;
+        opacity: 1;
+        z-index: 1;
+      }
+      
+      .burger {
+        position: absolute;
+        cursor: pointer;
+        width: 2.4rem;
+        transform: translate(-4.8rem);
+        transition: vibility 0.5s ease-out, opacity 0.5s ease-out;
+      }
+      .burger *{
+        transition: all 0.3s;
+      }
+      .burgerActive {
+        width: 2.4rem;
+        cursor: pointer;
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        transform: translate(-4.8rem);
+        transition: vibility 0.5s ease-out, opacity 0.5s ease-out;
+      }
+      
+      .navLink {
+        color: $white;
+        z-index: 2;
+        padding: 1.5rem 1.6rem;
+        cursor: pointer;
+        font-size: 1.4rem;
+        line-height: 1;
+      }
+      .navLinkText{
+          white-space: nowrap;
+      }
+      .hoveredLink {
+        background-color: $orange;
+        border-radius: 0.8rem;
+      }
+      .navigation {
+        position: relative;
+        width: 14.7rem;
+        overflow: hidden;
+        display: flex;
+        flex-flow: row-reverse;
+        transition: width 0.5s cubic-bezier(0.56, 0.01, 0.95, 0.94);
+      }
+      .navigation.active {
+        width: 40.2rem;
+      }
+
     // Хедер конец
 
 
     // Главный баннер
 
-    .mainBannerContainer{
+    .mainBannerContainer {
         padding: 6rem;
         border: rgba(29, 29, 29, 0.6) 0.1rem solid;
         border-radius: 1.6rem;
@@ -190,29 +273,30 @@ only screen {
         display: flex;
         gap: 4rem;
     }
-    
+
     .workList__item {
         color: $grey;
         @extend %fz16;
     }
+
     // Главный баннер конец
 
 
-
+    // секция партнеров
     .partnersWrapper {
         display: flex;
         flex-flow: column;
         gap: 5rem;
         overflow: hidden;
     }
-    
+
     .partnersRow {
         display: flex;
         width: fit-content;
     }
-    
+
     .partnerContainer {
-        padding: 0 6rem 0 6rem;
+        padding: 0 3rem 0 3rem;
         height: 6rem;
         display: flex;
         align-items: center;
@@ -220,7 +304,522 @@ only screen {
         background-color: $grey100;
         border-radius: 100px;
     }
-    
+
+    // секция партнеров конец
+
+
+    // список работ
+
+    .servicesWrapper {
+        display: flex;
+        flex-flow: column;
+        gap: 20rem;
+    }
+
+
+    .service {
+        display: flex;
+        flex-flow: column;
+        gap: 3rem;
+    }
+
+    .serviceTextContainer {
+        display: flex;
+        gap: 10rem;
+    }
+
+    .serviceText {
+        color: $grey;
+        @extend %fz25;
+    }
+
+    .techsContainer {
+        display: flex;
+        column-gap: 0.5rem;
+        row-gap: 1rem;
+        flex-flow: wrap;
+        height: fit-content;
+    }
+
+    .tech {
+        padding: 1.2rem 2rem;
+        opacity: 0.5;
+        border-radius: 99px;
+        border: 0.1rem solid $black;
+        height: fit-content;
+
+        @extend %fz15;
+    }
+
+    // список работ конец
+
+    // слайдеры с проектами
+    .projectsContainer {
+        display: flex;
+        gap: 20rem;
+        flex-flow: column;
+        align-items: center
+    }
+
+    .projects__textContainer {
+        width: 100%;
+        display: flex;
+    }
+
+    .projects__dateText {
+        @extend %fz25;
+    }
+
+    .projects__text {
+        @extend %fz25;
+        opacity: 0.5;
+    }
+
+    .projectContainer {
+        padding-left: 6rem;
+        width: 100%;
+        display: flex;
+        gap: 12rem;
+    }
+
+    .projectsSlider {
+        overflow: hidden;
+        position: relative;
+        width: 56rem;
+
+        &__navigation {
+            width: max-content;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            position: absolute;
+            z-index: 2;
+            transform: translate(0, -300%);
+
+            .swiper-pagination-bullet {
+                background-color: $white;
+                opacity: 1;
+                width: 1rem;
+                height: 1rem;
+            }
+
+            .swiper-pagination-bullet-active {
+                background-color: $orange;
+            }
+        }
+
+        &.swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
+        .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+            margin: 0;
+        }
+    }
+
+    .projectSlide {
+        overflow-x: hidden;
+
+        &:not(:last-child) {
+            margin-right: 1rem;
+        }
+    }
+
+    .projectSlider__asset {
+        width: 100%;
+        height: 56rem;
+        object-fit: cover;
+        border-radius: 1rem;
+        pointer-events: none;
+    }
+
+
+
+    .projectsMainInfo {
+        display: flex;
+        gap: 1rem;
+        flex-flow: column;
+    }
+
+    .projectInfo {
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+        width: 56rem;
+
+        &__textContainer {
+            display: flex;
+            flex-flow: column;
+            gap: 3rem;
+
+        }
+    }
+
+    .projectTitleContainer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .projectTitle {
+        @extend %fz20;
+    }
+
+    .projectYears {
+        @extend %fz20;
+        opacity: 0.5;
+    }
+
+    .projectDesc {
+        @extend %fz20;
+        text-transform: uppercase;
+    }
+
+    .openReviewBtn {
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        border: 0.1rem solid $black;
+        @extend %fz18;
+        border-radius: 1rem;
+        cursor: pointer;
+    }
+
+    .projectLinks {
+        display: flex;
+        flex-flow: column;
+        gap: 2rem;
+
+        &__wrapper {
+            display: flex;
+            flex-flow: wrap;
+            gap: 1rem;
+        }
+
+        &__text {
+            @extend %fz15;
+        }
+    }
+
+    .projectLink {
+        padding: 1.5rem;
+        border-radius: 1rem;
+        display: flex;
+        gap: 1.5rem;
+        width: fit-content;
+        align-items: center;
+        color: $white;
+        @extend %fz18;
+
+        &__arrowSVG {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        &.dprofileLink {
+            background: rgba(254, 86, 57, 1);
+
+            .projectLink__logo {
+                width: 8.2rem;
+                height: 2rem;
+            }
+        }
+
+        &.workspaceLink {
+            background: rgba(0, 31, 49, 1);
+
+            .projectLink__logo {
+                width: 10.8rem;
+                height: 1.4rem;
+            }
+        }
+
+        &.siteLink {
+            background: linear-gradient(93.49deg, #B95CF2 0.81%, #FF553A 100%);
+        }
+
+    }
+
+
+    // слайдеры с проектами конец
+
+
+    // форма обратной связи
+    .contactUsForm {
+        position: relative;
+        z-index: 2;
+        background-color: $black;
+
+        display: flex;
+
+        padding-top: 15rem;
+        padding-bottom: 15rem;
+
+        &__title {
+            color: $white;
+        }
+
+        &__text {
+            opacity: 0.5;
+            color: $white;
+            @extend %fz20;
+        }
+
+        &__textContainer,
+        &__inputsContainer {
+            display: flex;
+            flex-flow: column;
+            gap: 3rem;
+        }
+    }
+
+    .tasksSelect {
+        display: flex;
+        flex-flow: column;
+        gap: 3rem;
+    }
+
+    .tasksSelect__title {
+        color: $white;
+        @extend %fz24;
+    }
+
+    .tasksWrapper {
+        display: flex;
+        column-gap: 0.5rem;
+        row-gap: 1rem;
+        flex-flow: wrap;
+    }
+
+    .task {
+        opacity: 0.6;
+        padding: 1.2rem 2rem;
+        border: $white solid 0.1rem;
+        color: $white;
+        border-radius: 99px;
+
+        @extend %fz20;
+
+        transition: all 0.3s;
+        cursor: pointer;
+    }
+
+    .task.active {
+        background-color: $white;
+        color: $black;
+        opacity: 1;
+    }
+
+    .inputsContainer {
+        display: flex;
+        gap: 1rem;
+        flex-flow: column;
+    }
+
+    .inputContainer {
+        position: relative;
+        display: flex;
+        justify-content: end;
+    }
+
+    .input {
+        outline: none;
+        max-width: 100%;
+        width: 100%;
+        height: 8rem;
+
+        border: 0;
+        border-radius: 1rem;
+        padding: 2.8rem 0 2.8rem 2rem;
+        background-color: $white;
+
+        @extend %fz24;
+
+        border: solid $white 0.3rem;
+
+        transition: width 0.3s cubic-bezier(0.56, 0.01, 0.95, 0.94), height 0.3s cubic-bezier(0.56, 0.01, 0.95, 0.94),
+            margin 0.3s cubic-bezier(0.56, 0.01, 0.95, 0.94), border 0.3s cubic-bezier(0.56, 0.01, 0.95, 0.94);
+    }
+
+    .label {
+        cursor: text;
+        position: absolute;
+        left: 2rem;
+        top: 2.8rem;
+        z-index: 2;
+        @extend %fz24;
+
+        transition: color 0.3s cubic-bezier(1, 0, .86, .42);
+    }
+
+    .inputText {
+        min-width: 100%;
+    }
+
+    .input.filled {
+        border: rgb(19, 189, 16) solid 0.3rem;
+    }
+
+    .input:invalid.filled {
+        border: rgb(189, 16, 16) solid 0.3rem;
+    }
+
+    .input.required {
+        border: rgb(189, 16, 16) solid 0.3rem;
+    }
+
+    .input.inputName.filled,
+    .input.inputName:focus {
+        width: 57.5rem;
+    }
+
+    .input.inputTel.filled,
+    .input.inputTel:focus {
+        width: 59rem;
+    }
+
+    .input.inputMail.filled,
+    .input.inputMail:focus {
+        width: 63rem;
+    }
+
+    .input.inputText.filled,
+    .input.inputText:focus {
+        min-width: 100%;
+        height: 17rem;
+        margin-top: 6.2rem;
+    }
+
+    .input.inputFile.filled {
+        visibility: hidden;
+        position: absolute;
+        opacity: 0;
+        width: 0px;
+    }
+
+    .inputPreview {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        bottom: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 2rem;
+
+        transition: visibility 0.3s, opacity 0.3s;
+    }
+
+    .inputPreview__filename {
+        @extend %fz24;
+        color: $white;
+        max-width: 46rem;
+    }
+
+    .deleteFileLogo {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .input.inputFile.filled~.inputPreview {
+        visibility: visible;
+        position: inherit;
+        opacity: 1;
+    }
+
+    .input.filled~.label,
+    .input:focus~.label {
+        color: $white;
+    }
+
+    .inputText {
+        height: 23.2rem;
+    }
+
+    .inputFile {
+        position: relative;
+        bottom: 0;
+        opacity: 1;
+        display: flex;
+        align-items: center;
+        padding-top: 0;
+        padding-bottom: 0;
+        transition: visibility 0.3s, opacity 0.3s;
+        cursor: pointer;
+    }
+
+    .inputFileLogo {
+        width: 3.4rem;
+        height: 3.4rem;
+        position: absolute;
+        bottom: 2.3rem;
+        top: 2.3rem;
+        right: 2rem;
+    }
+
+    .contactUsForm__infoText {
+        @extend %fz20;
+        opacity: 0.5;
+        color: $white;
+    }
+
+    .contactUsForm__btn {
+        background-color: $orange;
+        color: $white;
+        padding: 4.5rem 0;
+        border-radius: 1rem;
+        cursor: pointer;
+
+        font-size: 3rem;
+        line-height: 1;
+    }
+
+    // форма обратной связи конец
+
+
+    // секция с контактами
+    .footer{
+        transform: translate(0, -35%);
+    }
+    .contactUs {
+        display: flex;
+
+        position: relative;
+    }
+    .contactUs__titleContainer{
+        display: flex;
+        flex-flow: column;
+        gap: 5rem;
+    }
+
+    .usernameLink {
+        text-align: end;
+        @extend %fz40;
+    }
+
+    .reachUsContainer {
+        display: flex;
+        flex-flow: column;
+        gap: 5rem;
+    }
+
+    .reachUs {
+        display: flex;
+        flex-flow: column;
+        gap: 1rem;
+
+        &__method,
+        &__schedule {
+            opacity: 0.5;
+            @extend %fz20;
+        }
+    }
+    .copyright{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        @extend %fz20;
+    }
+
+    // секция с контактами конец
 }
 
 @media only screen and (orientation: portrait) {
@@ -284,16 +883,21 @@ only screen {
         justify-content: center;
     }
 
+    .headerNav{
+        display: none;
+    }
+
 
     /* Хедер конец */
 
 
     /* Главный баннер */
-    .mainBannerContainer{
+    .mainBannerContainer {
         padding: 0;
         border: 0;
         border-radius: 0;
     }
+
     .workList {
         flex-flow: column;
         align-items: end;
@@ -307,6 +911,7 @@ only screen {
 
     // Мобильный бургер
     .mobBurgerMenu {
+        display: block;
         position: fixed;
         z-index: 10;
 
@@ -353,12 +958,7 @@ only screen {
 
     // секция партнеров
     .partnersWrapper {
-        gap: 2rem; 
-    }
-
-    .partnerContainer {
-        padding: 0 3rem 0 3rem;
-        height: 6rem;
+        gap: 2rem;
     }
 
     .partnerLogo {
@@ -368,47 +968,32 @@ only screen {
     // секция партнеров конец
 
 
+    // список работ
     .service {
-        display: flex;
         flex-flow: column;
         gap: 2rem;
     }
 
-
     .servicesWrapper {
-        display: flex;
-        flex-flow: column;
         gap: 10rem;
     }
 
-    .serviceText {
-        color: $grey;
-        font-size: 2.5rem;
-        line-height: 1;
-    }
-
-    .techsContainer {
-        display: flex;
-        column-gap: 0.5rem;
-        row-gap: 1rem;
-        flex-flow: wrap;
+    .serviceTextContainer {
+        flex-flow: column;
+        gap: 3rem;
     }
 
     .tech {
-        padding: 1.2rem 2rem;
-        opacity: 0.5;
-        border-radius: 99px;
-        border: 0.1rem solid $black;
-
         @extend %fz20m;
     }
 
+    // список работ конец
+
 
     // слайдеры с проектами
-    .projectsContainer {
-        display: flex;
-        gap: 20rem;
-        flex-flow: column;
+
+    .projects__textContainer {
+        display: block;
     }
 
     .projects__dateText {
@@ -420,66 +1005,18 @@ only screen {
         opacity: 0.5;
     }
 
-    .projectsSlider {
-        overflow: hidden;
-        position: relative;
-
-        &__navigation {
-            width: max-content;
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            position: absolute;
-            z-index: 2;
-            transform: translate(0, -300%);
-
-            .swiper-pagination-bullet {
-                background-color: $white;
-                opacity: 1;
-                width: 1rem;
-                height: 1rem;
-            }
-
-            .swiper-pagination-bullet-active {
-                background-color: $orange;
-            }
-        }
-
-        &.swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
-        .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
-            margin: 0;
-        }
-    }
-
-    .projectSlide {
-        overflow-x: hidden;
-
-        &:not(:last-child) {
-            margin-right: 1rem;
-        }
-    }
-
-    .projectSlider__asset {
-        width: 100%;
-        height: 56rem;
-        object-fit: cover;
-    }
-
     .projectContainer {
-        display: flex;
+        padding: 0;
         gap: 3rem;
         flex-flow: column;
     }
 
-    .projectsMainInfo {
-        display: flex;
-        gap: 1.5rem;
-        flex-flow: column;
+    .projectInfo {
+        gap: 5rem;
     }
 
-    .projectTitleContainer {
-        display: flex;
-        justify-content: space-between;
+    .projectsMainInfo {
+        gap: 1.5rem;
     }
 
     .projectTitle {
@@ -488,6 +1025,7 @@ only screen {
 
     .projectYears {
         @extend %fz25m;
+        opacity: 1;
     }
 
     .projectDesc {
@@ -496,39 +1034,18 @@ only screen {
         text-transform: uppercase;
     }
 
-    .projectLinks {
-        display: flex;
-        flex-flow: column;
-        gap: 2rem;
+    .openReviewBtn {
+        padding: 2rem 1.8rem;
+        @extend %fz20m;
+    }
 
-        &__wrapper {
-            display: flex;
-            flex-flow: wrap;
-            gap: 1rem;
-
-            .btn {
-                padding: 2rem 1.8rem;
-                display: flex;
-                align-items: center;
-                border: 0.1rem solid $black;
-                @extend %fz20m;
-                border-radius: 1rem;
-            }
-        }
-
-        &__text {
-            @extend %fz20m;
-        }
+    .projectLinks__text {
+        @extend %fz20m;
     }
 
     .projectLink {
         padding: 2rem 1.8rem;
-        border-radius: 1rem;
-        display: flex;
         gap: 2rem;
-        width: fit-content;
-        align-items: center;
-        color: $white;
         @extend %fz20m;
 
         &__arrowSVG {
@@ -536,22 +1053,14 @@ only screen {
             height: 2.4rem;
         }
 
-        &.dprofileLink {
-            background: rgba(254, 86, 57, 1);
-
-            .projectLink__logo {
-                width: 9.9rem;
-                height: 2.4rem;
-            }
+        &.dprofileLink .projectLink__logo {
+            width: 9.9rem;
+            height: 2.4rem;
         }
 
-        &.workspaceLink {
-            background: rgba(0, 31, 49, 1);
-
-            .projectLink__logo {
-                width: 12.4rem;
-                height: 1.6rem;
-            }
+        &.workspaceLink .projectLink__logo {
+            width: 12.4rem;
+            height: 1.6rem;
         }
 
         &.siteLink {
@@ -565,114 +1074,15 @@ only screen {
 
     // форма обратной связи
     .contactUsForm {
-        position: relative;
-        z-index: 2;
-        background-color: $black;
-
-        display: flex;
         flex-flow: column;
         gap: 3rem;
 
         padding-top: 4rem;
         padding-bottom: 3rem;
-
-        &__title {
-            color: $white;
-        }
-
-        &__text {
-            opacity: 0.5;
-            color: $white;
-            @extend %fz20m;
-        }
-    }
-
-
-    .tasksSelect__title {
-        color: $white;
-        @extend %fz24m;
-    }
-
-    .tasksWrapper {
-        display: flex;
-        column-gap: 0.5rem;
-        row-gap: 1rem;
-        flex-flow: wrap;
-    }
-
-    .task {
-        opacity: 0.6;
-        padding: 1.2rem 2rem;
-        border: $white solid 0.1rem;
-        color: $white;
-        border-radius: 99px;
-
-        @extend %fz20m;
-
-        transition: all 0.3s;
-    }
-
-    .task.active {
-        background-color: $white;
-        color: $black;
-        opacity: 1;
-    }
-
-    .inputsContainer {
-        display: flex;
-        gap: 1rem;
-        flex-flow: column;
-    }
-
-    .inputContainer {
-        position: relative;
-        display: flex;
-        justify-content: end;
     }
 
     .input {
-        outline: none;
-        max-width: 100%;
-        width: 100%;
-        height: 8rem;
-
-        border: 0;
-        border-radius: 1rem;
-        padding: 2.8rem 0 2.8rem 2rem;
-        background-color: $white;
-
         @extend %fz24m;
-
-        border: solid $white 0.3rem;
-
-        transition: width 0.3s cubic-bezier(0.56, 0.01, 0.95, 0.94), height 0.3s cubic-bezier(0.56, 0.01, 0.95, 0.94),
-            margin 0.3s cubic-bezier(0.56, 0.01, 0.95, 0.94), border 0.3s cubic-bezier(0.56, 0.01, 0.95, 0.94);
-    }
-
-    .label {
-        position: absolute;
-        left: 2rem;
-        top: 2.8rem;
-        z-index: 2;
-        @extend %fz24m;
-
-        transition: color 0.3s cubic-bezier(1, 0, .86, .42);
-    }
-
-    .inputText {
-        min-width: 100%;
-    }
-
-    .input.filled {
-        border: rgb(19, 189, 16) solid 0.3rem;
-    }
-
-    .input:invalid.filled {
-        border: rgb(189, 16, 16) solid 0.3rem;
-    }
-
-    .input.required {
-        border: rgb(189, 16, 16) solid 0.3rem;
     }
 
     .input.inputName.filled,
@@ -690,104 +1100,14 @@ only screen {
         width: 43.9rem;
     }
 
-    .input.inputText.filled,
-    .input.inputText:focus {
-        min-width: 100%;
-        height: 17rem;
-        margin-top: 6.2rem;
-    }
-
-    .input.inputFile.filled {
-        visibility: hidden;
-        position: absolute;
-        opacity: 0;
-        width: 0px;
-    }
-
-    .inputPreview {
-        visibility: hidden;
-        opacity: 0;
-        position: absolute;
-        bottom: 0;
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-left: 2rem;
-
-        transition: visibility 0.3s, opacity 0.3s;
-    }
-
-    .inputPreview__filename {
-        @extend %fz24m;
-        color: $white;
-        max-width: 46rem;
-    }
-
-    .deleteFileLogo {
-        width: 8rem;
-        height: 8rem;
-    }
-
-    .input.inputFile.filled~.inputPreview {
-        visibility: visible;
-        position: inherit;
-        opacity: 1;
-    }
-
-    .input.filled~.label,
-    .input:focus~.label {
-        color: $white;
-    }
-
-    .inputText {
-        height: 23.2rem;
-    }
-
-    .inputFile {
-        position: relative;
-        bottom: 0;
-        opacity: 1;
-        display: flex;
-        align-items: center;
-        padding-top: 0;
-        padding-bottom: 0;
-        transition: visibility 0.3s, opacity 0.3s;
-    }
-
-    .inputFileLogo {
-        width: 3.4rem;
-        height: 3.4rem;
-        position: absolute;
-        bottom: 2.3rem;
-        top: 2.3rem;
-        right: 2rem;
-    }
-
-    .contactUsForm__infoText {
-        @extend %fz20m;
-        opacity: 0.5;
-        color: $white;
-    }
-
-    .contactUsForm__btn {
-        background-color: $orange;
-        color: $white;
-        padding: 4.5rem 0;
-        border-radius: 1rem;
-
-        font-size: 3rem;
-        line-height: 1;
-    }
-
     // форма обратной связи конец
 
 
     // секция с контактами
-    .contactUs {
-        transform: translate(0, -45%);
-    }
 
+    .contactUs{
+        flex-flow: column;
+    }
     .usernameLink {
         text-align: end;
         @extend %fz40m;
@@ -809,6 +1129,9 @@ only screen {
             opacity: 0.5;
             @extend %fz20m;
         }
+    }
+    .copyright{
+        position: relative;
     }
 
     // секция с контактами конец
@@ -842,34 +1165,107 @@ only screen {
     position: absolute;
 }
 
-.rightCol {
-    max-width: 28rem;
-    transform: translate(100%);
+.mt-485 {
+    margin-top: 48.5rem;
 }
 
+.mt-400 {
+    margin-top: 40rem;
+}
 
-.mt-200{
+.mt-300 {
+    margin-top: 30rem;
+}
+
+.mt-260 {
+    margin-top: 26rem;
+}
+.mt-230 {
+    margin-top: 23rem;
+}
+.mt-200 {
     margin-top: 20rem;
 }
-.mt-182{
+
+.mt-182 {
     margin-top: 18.2rem;
 }
+
 .mt-164 {
     margin-top: 16.4rem;
 }
-.mt-160{
+
+.mt-160 {
     margin-top: 16rem;
 }
+
 .mt-100 {
     margin-top: 10rem;
 }
+
+.mt-70 {
+    margin-top: 7rem;
+}
+
+.mb-100 {
+    margin-bottom: 10rem;
+}
+.mb-50 {
+    margin-bottom: 5rem;
+}
+
+.mx-auto {
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .px-60 {
     padding-left: 6rem;
     padding-right: 6rem;
 }
-.w-916{
+
+.w-916 {
     width: 91.6rem;
 }
+
+.w-900 {
+    width: 90rem;
+}
+
+.w-1200 {
+    width: 120rem;
+}
+
+.w-740 {
+    max-width: 74rem;
+    min-width: 74rem;
+    width: 74rem;
+}
+
+.w-600 {
+    width: 60rem;
+}
+
+.w-560 {
+    width: 56rem;
+}
+
+.w-536 {
+    width: 53.6rem;
+}
+
+.w-500 {
+    width: 50rem;
+}
+
+.w-280 {
+    width: 28rem;
+}
+
+.w-50perc {
+    width: 50%;
+}
+
 
 @media only screen and (orientation: portrait) {
     .mt-188m {
@@ -899,6 +1295,9 @@ only screen {
     .mt-50m {
         margin-top: 5rem;
     }
+    .mt-0m{
+        margin-top: 0;
+    }
 
     .mb-220m {
         margin-bottom: 22rem;
@@ -917,8 +1316,19 @@ only screen {
         padding-right: 2rem;
     }
 
-    .w-autom{
-        width: auto;
+    .w-unsetm {
+        max-width: unset;
+        min-width: unset;
+        width: unset;
+    }
+    .w-560m {
+        max-width: 56rem;
+        min-width: 56rem;
+        width: 56rem;
+    }
+
+    .rightColm {
+        transform: translate(100%);
     }
 }
 

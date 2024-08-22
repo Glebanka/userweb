@@ -112,49 +112,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-        let remToPx = 40 * parseFloat(getComputedStyle(document.documentElement).fontSize); // 20rem в пикселях
+        let remToPx = 35 * parseFloat(getComputedStyle(document.documentElement).fontSize); // заданное значение rem в пикселях
         let tl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".contactUsForm",
                 start: "bottom 90%",
                 end: "+=" + remToPx,
-                pin: ".contactUs",
                 scrub: true,
             }
-        })
-        gsap.registerPlugin(ScrollTrigger);
-
-        ScrollTrigger.create({
-            trigger: ".contactUsForm",
-            start: "top bottom",
-            end: "bottom 30%",
-            onEnter: () => {
-                unfixFooter();
-            },
-            onEnterBack: () => {
-                unfixFooter();
-            },
-            onLeaveBack: () => {
-                unfixFooter()
-            },
-            onLeave: () => {
-                fixFooter();
-            }
-        })
-        function fixFooter() {
-            document.querySelector(".footer").style.setProperty("margin-top", "15rem")
-        }
-        function unfixFooter() {
-            document.querySelector(".footer").style.setProperty("margin-top", "50rem")
-        }
-
-        // исправляем проблемы gsap контейнера 
-        setTimeout(() => {
-            // document.querySelector(".pin-spacer").style.setProperty("height", `fit-content`);
-            document.querySelector(".pin-spacer").style.setProperty("padding-bottom", `0`);
-            document.querySelector(".contactUs").style.setProperty("margin-bottom", 0)
-        }, 100) // если querySelector = null, значит он не успел прогрузится, увеличить setTimeout
-
+        }).to(".footer", {y: "0", ease: "linear" })
     }
 
     contactUsForm()
@@ -273,5 +239,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     partnersAnimation()
 
-
+    function linkScroll(){
+        let contactBtn = document.querySelector(".contactBtn")
+        contactBtn.addEventListener("click",()=>{
+            let contentToScroll = document.querySelector("#"+contactBtn.dataset.scrollId)
+            let targetPosition = contentToScroll.offsetTop - 50; // целевая позиция прокрутки
+            window.scrollTo({
+                top: targetPosition,
+                left: 0,
+                behavior: 'smooth'
+              });
+            })
+    }
+    linkScroll()
 })
