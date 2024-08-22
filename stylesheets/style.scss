@@ -304,6 +304,15 @@ only screen {
         background-color: $grey100;
         border-radius: 100px;
     }
+    .partnerContainer.black{
+        color: rgba(255, 255, 255, 0.8);
+        background-color: $black;
+        
+        *{
+            opacity: 1;
+            fill-opacity: 1;
+        }
+    }
 
     // секция партнеров конец
 
